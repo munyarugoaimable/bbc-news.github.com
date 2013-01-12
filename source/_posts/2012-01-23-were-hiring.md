@@ -1,8 +1,7 @@
 ---
 layout: post
 title: We're Hiring
-tags:
-- jobs
+tags: jobs
 ---
 _[UPDATE] We've found someone to fill this post, but feel free to [get in
 touch](mailto:webdevelopers@bbc.co.uk) with us about future opportunities._

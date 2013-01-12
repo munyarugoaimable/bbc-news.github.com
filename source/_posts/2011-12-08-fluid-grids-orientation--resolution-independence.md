@@ -63,20 +63,20 @@ By [specifying our font sizes in ems](http://clagnut.com/blog/348/) we can
 adjust every font-size on the page by using media-queries to change the font-
 size set on the BODY or HTML element according to viewport width:
 
-    
-    
+```css
+
         @media (min-width: 960px) {
             html {
                 font-size: 12px;
             }
         }
-    
+
         @media (max-width: 959px) {
             html {
                 font-size: 10px;
             }
         }
-    
+```
 
 This gives us a starting point - the styles will make your em-specified fonts
 smaller when the viewport is narrower than 960px - but it's an arbitrary
@@ -99,38 +99,38 @@ scale.jpg)
 
 Which looks like this in CSS:
 
-    
-    
+```css
+
         @media (min-width: 858px) {
             html {
                 font-size: 12px;
             }
         }
-    
+
         @media (min-width: 780px) {
             html {
                 font-size: 11px;
             }
         }
-    
+
         @media (min-width: 702px) {
             html {
                 font-size: 10px;
             }
         }
-    
+
         @media (min-width: 724px) {
             html {
                 font-size: 9px;
             }
         }
-    
+
         @media (max-width: 623px) {
             html {
                 font-size: 8px;
             }
         }
-    
+```
 
 Which works beautifully in principle - but unfortunately we get some scaling
 distortions due to em sizing being contextual to the font-sizing of _any_

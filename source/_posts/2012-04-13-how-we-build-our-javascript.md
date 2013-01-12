@@ -109,14 +109,14 @@ AMD provides two global methods, _define_ and _require_. The _define_ method
 is used to create modules that will be used from other areas of the code:-
 
 
-
+```js
         define(
             [modules/news, vendor/reqwest, vendor/pubsub],
             function(news, reqwest, pubsub){
                 // Code goes here
             }
         );
-
+```
 
 So, in the example above the dependencies _['modules/news', 'vendor/reqwest',
 'vendor/pubsub']_ are asynchronously loaded and references to them are mapped
@@ -195,7 +195,7 @@ weather for the new location.
 We've separated out the presentation of the weather to another module.
 
 
-
+```js
         define([vendor/pubsub, vendor/ender/qwery], function(pubsub, $) {
 
             // Constructor function
@@ -227,7 +227,7 @@ We've separated out the presentation of the weather to another module.
             // Return the constructor
             return WeatherView;
         });
-
+```
 
 The presentation module listens for the 'weather:success' event and, upon
 receiving that, rebuilds the UI.
@@ -251,7 +251,7 @@ PubSub is probably best explained with a diagram.
 
 And the code looks something like this:
 
-
+```js
 
         // Create a new EventEmitter instance (which we usually inject into each module)
         var pubsub = new EventEmitter();
@@ -265,7 +265,7 @@ And the code looks something like this:
         pubsub.emit(menu:top:open);
 
         // The Subscriber.sendStats() is then called by the central pubsub registry
-
+```
 
 ## Next time
 

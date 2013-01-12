@@ -12,37 +12,37 @@ your website you simply write some new CSS to style it - easy.
 
 <!-- more -->
 
-    
-    
+```css
+
         #feature-4 {
             width: 50%;
             float: left;
             clear: both;
         }
-        
+
         #feature-4 article:first-child h2 {
             color: red;
         }
-    
-    
-    
-        
-    
+
+
+
+
+
     # Feature 4
-    
-    
-            
-    
-    
-                
-    
+
+
+
+
+
+
+
     ## Something happened!
-    
-    
-                
-    
-    
-        
+
+
+```
+
+
+
 
 ![](http://static.responsivenews.co.uk/examples/img/less-css-vis1.png)
 
@@ -51,37 +51,37 @@ over every element. For a medium-sized site you can scale your CSS by applying
 a few HTML patterns to your features, then simply writing your CSS to style
 those patterns rather than the features individually.
 
-    
-    
+```css
+
         .feature-4 {
             width: 50%;
             float: left;
             clear: both;
         }
-        
+
         .latest-item h2 {
             color: red;
         }
-    
-    
-    
-        
-    
+
+
+
+
+
     # Feature 4
-    
-    
-            
-    
-    
-                
-    
+
+
+
+
+
+
+
     ## Something happened!
-    
-    
-                
-    
-    
-        
+
+
+
+```
+
+
 
 Then you try to write CSS for a big website. A website with hundreds of
 features, hundreds of thousands of pages. A site where you need to ensure
@@ -134,40 +134,40 @@ But the technique also comes with a significant sticking point - it requires
 reuseable styles to be defined using explicit classnames (such as .left-
 column) rather than semantic classnames (.main-content).
 
-    
-    
+
+```css
         .column-1of2 {
             width: 50%;
             float: left;
         }
-        
+
         .left-column {
             clear: both;
         }
-        
+
         .highlight {
             color: red;
         }
-    
-    
-    
-        
-    
+
+
+
+
+
     # Timeline
-    
-    
-            
-    
-    
-                
-    
+
+
+
+
+
+
+
     ## Something happened!
-    
-    
-                
-    
-    
-        
+
+
+
+```
+
+
 
 ![](http://static.responsivenews.co.uk/examples/img/less-css-vis1.png)
 
@@ -199,117 +199,117 @@ already had running in our build process).
 
 A styleguide LESS file would look like this:
 
-    
-    
+```css
+
         .column-1of2 () {
             width: 50%;
             float: left;
         }
-        
+
         .left-column () {
             clear: both;
         }
-        
+
         .highlight () {
             color: red;
         }
-    
+```
 
 We can then create a LESS file for each HTML feature we produce, each of which
 simply reference the styleguide classes.
 
-    
-    
+
+```css
         .feature-4 {
             .column-1of2;
             .left-column;
-            
+
             article:first-child h2 {
                 .highlight;
             }
         }
-    
+```
 
 A LESS 'compiler' file pulls in both the styleguide and feature file:
 
-    
-    
+```css
+
         @import (styleguide.less);
         @import (feature-4.less);
-    
 
+```
 And outputs a CSS file that looks like this:
 
-    
-    
+```css
+
         .feature-4 {
             width: 50%;
             float: left;
             clear: both;
         }
-    
+
         .feature-4 article:first-child h2 {
             color: red;
-        }   
-    
-    
-    
-        
-    
+        }
+
+
+
+
+
     # Feature 4
-    
-    
-            
-    
-    
-                
-    
+
+
+
+
+
+
+
     ## Something happened!
-    
-    
-                
-    
-    
-        
+
+
+```
+
+
+
 
 fig.3. You can encourage re-use even further by creating UI patterns from your
 styleguide.
 
 Styleguide with UI pattern:
 
-    
-    
+```css
+
         .column-1of2 () {
             width: 50%;
             float: left;
         }
-        
+
         .left-column () {
             clear: both;
         }
-        
+
         .highlight () {
             color: red;
         }
-        
+
         .pattern-1 () {
             .column-1of2;
-            
+
             article:first-child h2 {
                 .highlight;
             }
         }
-    
 
+```
 Feature:
 
-    
-    
+```css
+
         .feature-4 {
             .pattern-1;
             .left-column;
         }
-    
+```
 
 ![](http://static.responsivenews.co.uk/examples/img/less-css-vis1.png)
 
@@ -322,62 +322,62 @@ the styleguide for each viewport.
 
 Styleguide with two UI patterns:
 
-    
-    
+```css
+
         .column-1of2 () {
             width: 50%;
             float: left;
         }
-        
+
         .column-1of1 () {
             width: 100%;
             float: none;
         }
-            
+
         .left-column () {
             clear: both;
         }
-        
+
         .highlight () {
             color: red;
         }
-        
+
         .pattern-1 () {
             .column-1of2;
-            
+
             article:first-child h2 {
                 .highlight;
             }
         }
-            
+
         .pattern-2 () {
             .column-1of1;
-            
+
             article:first-child h2 {
                 .highlight;
             }
         }
-    
+```
 
 Feature (wide viewport):
 
-    
-    
+```css
+
         .feature-4 {
             .pattern-1;
             .left-column;
         }
-    
+```
 
 Feature (narrow viewport):
 
-    
-    
+```css
+
         .feature-4 {
             .pattern-2;
             .left-column;
         }
-    
+```
 
 ![](http://static.responsivenews.co.uk/examples/img/less-css-vis1.png)
 

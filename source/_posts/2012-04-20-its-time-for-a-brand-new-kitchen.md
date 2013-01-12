@@ -1,7 +1,8 @@
 ---
 layout: post
 title: It's time for a brand new kitchen
-tags: !!null 
+author: Tom Maslen
+tags: responsive
 ---
 A few weeks ago we [blogged about our browser
 support](http://blog.responsivenews.co.uk/blog/2012/03/08/cutting-the-
