@@ -2,10 +2,10 @@
 project_type = :stand_alone
 
 # Publishing paths
-http_path = "/bbc-news/"
-http_images_path = "/bbc-news/images"
-http_fonts_path = "/bbc-news/fonts"
-css_dir = "public/bbc-news/stylesheets"
+http_path = "/"
+http_images_path = "/images"
+http_fonts_path = "/fonts"
+css_dir = "public/stylesheets"
 
 # Local development paths
 sass_dir = "sass"
