@@ -1,7 +1,8 @@
 ---
 layout: post
 title: How we build our Javascript
-tags: !!null
+author: John Cleveley
+tags: javascript
 ---
 This post isn't strictly about responsive design but hopefully it'll give you
 some insight into how you can optimise your JS to help support the goals of a
