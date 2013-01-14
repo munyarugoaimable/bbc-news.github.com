@@ -1,0 +1,554 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How we build our Javascript - Responsive News</title>
+  <meta name="author" content="BBC News crew">
+
+  
+  <meta name="description" content="This post isn&#8217;t strictly about responsive design but hopefully it&#8217;ll give you
+some insight into how you can optimise your JS to help &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://BBC-News.github.com/post/21021136520/how-we-build-our-javascript">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Responsive News" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <a href="/"><img src="http://static.responsivenews.co.uk/img/logo.png" alt="Responsive News" width="140" height="140"></a>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:BBC-News.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<!-- <ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How We Build Our Javascript</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-13T00:00:00+01:00" pubdate data-updated="true">Apr 13<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This post isn&#8217;t strictly about responsive design but hopefully it&#8217;ll give you
+some insight into how you can optimise your JS to help support the goals of a
+responsive site.</p>
+
+<!-- more -->
+
+
+<h2>Perception of page speed</h2>
+
+<p>Speed is really really <a href="http://www.useit.com/alertbox/response-%0Atimes.html">important</a>. There&#8217;s a ton of <a href="http://blog.kissmetrics.com/loading-%0Atime/">research</a> suggesting that users will simply leave a site and go elsewhere if they
+perceive a site to be slow. We&#8217;re currently developing the new <a href="http://m.bbc.co.uk/news">BBC News
+site</a> which has a large audience across the world
+with many users connecting via GPRS who would not appreciate a large 1MB
+monster.</p>
+
+<p>Therefore many of the design choices we make focus on optimisation, both in
+terms of the the size of the files and keeping the number of HTTP requests
+down to a minimum.</p>
+
+<h2>Cost of change</h2>
+
+<p>Over the last couple of years developers at the BBC have either been crying or
+celebrating the loss of their beloved BBC <a href="http://www.bbc.co.uk/glow/">Glow</a>
+JavaScript library. The library itself was awesome but for the BBC it was
+expensive to maintain. The consequence of announcing it&#8217;s demise and the
+adoption of jQuery meant sites had to upgrade. The migration effort to jQuery
+was pretty big.</p>
+
+<p>I say, &#8216;was pretty big&#8217;, but it&#8217;s not really complete.</p>
+
+<p>If you look at the source of many BBC sites built over the last couple of
+years (Eg, <a href="http://www.bbc.co.uk/news">News</a>,
+<a href="http://www.bbc.co.uk/iplayer">iPlayer</a> …) you&#8217;ll see many references to Glow
+v1. Even recent projects (Eg, <a href="http://www.bbc.co.uk/sport">Sport</a> - relaunch
+in February 2012) seem resigned to using Glow in parts of their application
+rather than migrating to something supported, such is the tight coupling of
+some functionality to that library and expense of moving away from it.</p>
+
+<p>And what is the reward for migration? To have to do it all again in 18 months
+time when the project outgrows whatever library you pick or the library falls
+out of favour, like last year&#8217;s wetlook leggings.</p>
+
+<p>To mitigate the effort needed in porting between libraries on a large site we
+took a look around for better solutions to the problem. We wanted to make sure
+our code was designed in a way that made swapping underlying code easier and
+cheaper.</p>
+
+<p>Addy describes the problem well in his <a href="http://addyosmani.com/scalablejs">Scalable JavaScript
+Patterns</a> talk and Stuart&#8217;s presentation,
+<a href="http://blog.stuartherbert.com/php/2011/03/20/following-up-%0Amy-beyond-frameworks-talk/">Beyond Frameworks</a> is also worth reading, albeit about PHP. Lastly,
+and fortunately for us in the context of this essay, browsers have come a long
+way in the last couple of years, with multiple vendors competing to support
+HTML5 and other new APIs. This has given us an
+<a href="http://blog.responsivenews.co.uk/blog/2012/03/08/cutting-the-%0Amustard/">opportunity</a> to make the most of native functionality and to remove the chains of
+the framework.</p>
+
+<h2>Micro libraries</h2>
+
+<p>I&#8217;m the kind of guy that would always go for the pick &#8216;n mix sweets over a
+pre-packaged bag of goodies. Especially as I hate the liquorish ones.</p>
+
+<p>jQuery is great but it ships with loads of stuff we don&#8217;t need (35Kb worth).
+We should only be sending the browser what code will actually be needed, and
+slowly backing in to the frameworks where we feel we need the support.
+Anything beyond that is wasteful and slows the experience of the site (think
+GPRS in the middle of nowhere).</p>
+
+<p>The idea with micro libraries is that you can cherry pick small self contained
+modules of code to do a specific job which helps to avoid large monolithic
+dependencies.</p>
+
+<p><a href="http://twitter.com/thomasfuchs">Thomas Fuchs</a> has put together an excellent
+<a href="http://www.microjs.com">resource</a> of javascript micro libraries and its a
+great place to explore and compare libraries for particular tasks.</p>
+
+<p>What we use:</p>
+
+<ul>
+<li><a href="https://github.com/ded/reqwest">Reqwest</a> - AJAX requests</li>
+<li><a href="https://github.com/ded/bonzo">Bonzo</a> - DOM utility methods</li>
+<li><a href="https://github.com/ded/qwery">Qwery</a> (mobile) - Selector wrapper around native functions</li>
+<li><a href="https://github.com/Wolfy87/EventEmitter">Event Emitter</a> - PubSub</li>
+<li><a href="https://github.com/cujojs/curl">Curl</a> - AMD Javascript loader</li>
+</ul>
+
+
+<p>N.b. Dojo have started to go down this route, hopefully jQuery will go modular
+too at some point.</p>
+
+<h2>Loading what you need</h2>
+
+<p>Aside from carefully picking and choosing our framework dependencies wouldn&#8217;t
+it be awesome if we could manage them like we do with with rubygems or npms?
+We can thanks to AMD.</p>
+
+<p>The <a href="https://github.com/amdjs/amdjs-%0Aapi/wiki/AMD">Asynchronous Module Definition (AMD)</a> spec allows us to inject specific libraries into the a chunk of
+code and have them downloaded to the browser only when we need them.</p>
+
+<p>This makes our pages load faster as we&#8217;re not waiting for the scripts to load
+at the start, instead they are deferred until we need them.</p>
+
+<p>AMD provides two global methods, <em>define</em> and <em>require</em>. The <em>define</em> method
+is used to create modules that will be used from other areas of the code:-</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="nx">define</span><span class="p">(</span>
+</span><span class='line'>        <span class="p">[</span><span class="nx">modules</span><span class="o">/</span><span class="nx">news</span><span class="p">,</span> <span class="nx">vendor</span><span class="o">/</span><span class="nx">reqwest</span><span class="p">,</span> <span class="nx">vendor</span><span class="o">/</span><span class="nx">pubsub</span><span class="p">],</span>
+</span><span class='line'>        <span class="kd">function</span><span class="p">(</span><span class="nx">news</span><span class="p">,</span> <span class="nx">reqwest</span><span class="p">,</span> <span class="nx">pubsub</span><span class="p">){</span>
+</span><span class='line'>            <span class="c1">// Code goes here</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, in the example above the dependencies <em>[&#8216;modules/news&#8217;, &#8216;vendor/reqwest&#8217;,
+&#8216;vendor/pubsub&#8217;]</em> are asynchronously loaded and references to them are mapped
+to the factory function arguments, which provides a local sandboxed version of
+them.</p>
+
+<p>The <em>require</em> method provides a sandboxed area where we can call in
+dependencies.</p>
+
+<p>AMD provides some big improvements to javascript including:-</p>
+
+<ol>
+<li>Groups code into manageable bits of functionality, that can be swapped in and out.</li>
+<li>Code is much easier to unit test.</li>
+<li>Code keeps out of the global scope, keeping it sandboxed on its own so it doesn&#8217;t mess with other code on the page.</li>
+<li>Faster scope lookups as you only deal with local variables.</li>
+<li>Modules are far more portable to other projects as dependencies are injected and not scattered.</li>
+<li>Conditionally require library code, for example different code for particular browsers.</li>
+</ol>
+
+
+<h2>Separation of business logic and DOM manipulation</h2>
+
+<p>My experience before of migrating projects from Glow to jQuery was that far
+too much business logic was tangled up with complicated DOM manipulation and
+when you needed to change the underlying library it was a total mess. Often it
+was simpler to start again.</p>
+
+<p>We don&#8217;t use a full fledged MVC framework on the News project as we want to
+keep things simple and lightweight but we still try and decouple code by
+separating out &#8216;things&#8217; into widgets, which each have a <em>logic</em> part and a
+<em>presentation</em> part. This allows us to isolate the areas where DOM libraries
+are being used and makes it far easier to understand where to go to change
+code.</p>
+
+<p>With the business logic module we write standard JavaScript that has no DOM
+manipulation in there whatsoever. You can still use libraries (if you really
+have to), but inject them using the AMD module pattern and use them sparingly.
+I.e. don&#8217;t wrap the structure of your code too deeply into the libraries API.</p>
+
+<p>Below is a simple example widget using this approach for our module that loads
+weather on to the front page :-</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="nx">define</span><span class="p">([</span><span class="nx">vendor</span><span class="o">/</span><span class="nx">pubsub</span><span class="p">,</span> <span class="nx">vendor</span><span class="o">/</span><span class="nx">ender</span><span class="o">/</span><span class="nx">reqwest</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">pubsub</span><span class="p">,</span> <span class="nx">reqwest</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">Weather</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">path</span> <span class="o">=</span> <span class="err">/weather;</span>
+</span><span class='line'>            <span class="c1">// subscribe to an external event</span>
+</span><span class='line'>            <span class="nx">pubsub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="nx">locator</span><span class="o">:</span><span class="nx">locationChanged</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">updateWeather</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">Weather</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">updateWeather</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">location</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="kd">var</span> <span class="nx">requestUrl</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">path</span> <span class="o">+</span> <span class="nx">location</span><span class="p">.</span><span class="nx">weather</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+</span><span class='line'>                <span class="nx">pubsub</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="nx">weather</span><span class="o">:</span><span class="nx">requestStarted</span><span class="p">);</span>
+</span><span class='line'>                <span class="nx">reqwest</span><span class="p">({</span>
+</span><span class='line'>                    <span class="nx">url</span><span class="o">:</span> <span class="nx">requestUrl</span><span class="p">,</span>
+</span><span class='line'>                    <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                        <span class="nx">pubsub</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="nx">weather</span><span class="o">:</span><span class="nx">success</span><span class="p">,</span> <span class="p">[</span><span class="nx">response</span><span class="p">,</span> <span class="nx">location</span><span class="p">.</span><span class="nx">weather</span><span class="p">.</span><span class="nx">id</span><span class="p">]);</span>
+</span><span class='line'>                    <span class="p">},</span>
+</span><span class='line'>                    <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                        <span class="nx">pubsub</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="nx">weather</span><span class="o">:</span><span class="nx">requestError</span><span class="p">,</span> <span class="p">[</span><span class="nx">error</span><span class="p">]);</span>
+</span><span class='line'>                    <span class="p">}</span>
+</span><span class='line'>                <span class="p">});</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="nx">Weather</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, not much more than a constructor that listens for an external event (in
+this case the user changing their location, Eg. from &#8216;London&#8217; to
+&#8216;Manchester&#8217;), which enacts some business logic (an XHR request) to fetch the
+weather for the new location.</p>
+
+<p>We&#8217;ve separated out the presentation of the weather to another module.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="nx">define</span><span class="p">([</span><span class="nx">vendor</span><span class="o">/</span><span class="nx">pubsub</span><span class="p">,</span> <span class="nx">vendor</span><span class="o">/</span><span class="nx">ender</span><span class="o">/</span><span class="nx">qwery</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">pubsub</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Constructor function</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">WeatherView</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">selectorContainer</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// cache dom references</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">selectorContainer</span><span class="p">);</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">weatherLink</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(.</span><span class="nx">weather</span><span class="o">-</span><span class="nx">link</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">);</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">weatherLinkHref</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">weatherLink</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="nx">href</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// set up event listeners</span>
+</span><span class='line'>            <span class="nx">news</span><span class="p">.</span><span class="nx">pubsub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="nx">weather</span><span class="o">:</span><span class="nx">success</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleSuccess</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// object methods</span>
+</span><span class='line'>        <span class="nx">WeatherView</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">setContent</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">this</span><span class="p">.</span><span class="nx">weatherLink</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">},</span>
+</span><span class='line'>            <span class="nx">setLink</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">locationId</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">this</span><span class="p">.</span><span class="nx">weatherLink</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="nx">href</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">weatherLinkHref</span> <span class="o">+</span> <span class="nx">forecast</span><span class="o">/</span> <span class="o">+</span> <span class="nx">locationId</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">},</span>
+</span><span class='line'>            <span class="nx">handleSuccess</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">,</span> <span class="nx">locationId</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">this</span><span class="p">.</span><span class="nx">setContent</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+</span><span class='line'>                <span class="k">this</span><span class="p">.</span><span class="nx">setLink</span><span class="p">(</span><span class="nx">locationId</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Return the constructor</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nx">WeatherView</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The presentation module listens for the &#8216;weather:success&#8217; event and, upon
+receiving that, rebuilds the UI.</p>
+
+<h2>Inter-module communication</h2>
+
+<p>To decouple the modules and make them easier to test we use the mediator
+pattern to communicate between them. The centralised pubsub system gives you a
+lot of flexibility and reduces the fragility of depending on the existence of
+foreign methods.</p>
+
+<p>The idea is that your object fires custom events and other objects which have
+subscribed to, will receive it. The publisher does not know about the other
+objects or care whether the other object has received it or not and, likewise,
+the subscriber does not know where the event came from. Think of it as fire
+and forget.</p>
+
+<p>PubSub is probably best explained with a diagram.</p>
+
+<ol>
+<li>PubSub<img src="http://dl.dropbox.com/u/8856415/pubsub.png" alt="" /></li>
+</ol>
+
+
+<p>And the code looks something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>        <span class="c1">// Create a new EventEmitter instance (which we usually inject into each module)</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">pubsub</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventEmitter</span><span class="p">();</span>
+</span><span class='line'>        <span class="p">...</span>
+</span><span class='line'>        <span class="c1">// The subscriber object registers for the event</span>
+</span><span class='line'>        <span class="nx">pubsub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="nx">menu</span><span class="o">:</span><span class="nx">top</span><span class="o">:</span><span class="nx">open</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">that</span><span class="p">.</span><span class="nx">sendStats</span><span class="p">();</span> <span class="c1">// remember this is not bound to the outer object</span>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>        <span class="p">...</span>
+</span><span class='line'>        <span class="c1">// The publisher emits an event to the registry</span>
+</span><span class='line'>        <span class="nx">pubsub</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="nx">menu</span><span class="o">:</span><span class="nx">top</span><span class="o">:</span><span class="nx">open</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// The Subscriber.sendStats() is then called by the central pubsub registry</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Next time</h2>
+
+<p>In the next part of this article we will go through how we test our
+JavaScript.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">John Cleveley</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-13T00:00:00+01:00" pubdate data-updated="true">Apr 13<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://BBC-News.github.com/post/21021136520/how-we-build-our-javascript" data-via="" data-counturl="http://BBC-News.github.com/post/21021136520/how-we-build-our-javascript" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/post/20004971477/v1-0" title="Previous Post: v1.0">&laquo; v1.0</a>
+      
+      
+        <a class="basic-alignment right" href="/post/21437180628/its-time-for-a-brand-new-kitchen" title="Next Post: It's time for a brand new kitchen">It's time for a brand new kitchen &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/post/21437180628/its-time-for-a-brand-new-kitchen">It's time for a brand new kitchen</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/21021136520/how-we-build-our-javascript">How we build our Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/20004971477/v1-0">v1.0</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/19230899764/colophon">Colophon</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/18948466399/cutting-the-mustard">Cutting the mustard</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Opinions expressed on this blog are those of a specific product team, and are not necessarily those of the BBC as a whole.
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

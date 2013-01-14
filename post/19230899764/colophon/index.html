@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Colophon - Responsive News</title>
+  <meta name="author" content="BBC News crew">
+
+  
+  <meta name="description" content="Here&#8217;s the technical stack we&#8217;ve used to build responsive news. Nb. BBC is a large(ish) organisation so we&#8217;ve already got a fully &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://BBC-News.github.com/post/19230899764/colophon">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Responsive News" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <a href="/"><img src="http://static.responsivenews.co.uk/img/logo.png" alt="Responsive News" width="140" height="140"></a>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:BBC-News.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<!-- <ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Colophon</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-13T00:00:00+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Here&#8217;s the technical stack we&#8217;ve used to build responsive news.</p>
+
+<p>Nb. BBC is a large(ish) organisation so we&#8217;ve already got a fully operational
+platform upon which to write applications, so I&#8217;ve not listed every last
+thing, just the tools and technology that we&#8217;ve selected to create our
+project.</p>
+
+<!-- more -->
+
+
+<h2>Javascript</h2>
+
+<p>We use <a href="https://github.com/ded/bonzo">bonzo</a> +
+<a href="https://github.com/ded/qwery">qwery</a> for dom manipulation and
+<a href="https://github.com/runningskull/reqwest">reqwest</a> for xhr (we use
+runningskull&#8217;s fork with jsonp and error callback support),
+<a href="https://github.com/cujojs/curl">curl.js</a> is our AMD loader and
+<a href="https://github.com/Wolfy87/EventEmitter">EventEmitter</a> manages all the
+pub/sub events between interface components. Mostly these were chosen because
+they were very lightweight, hence suitable for low bandwidth services, and
+more geared towards a <a href="http://blog.responsivenews.co.uk/blog/2012/03/08/cutting-the-%0Amustard/">modern definition of <em>browser
+support</em></a> than tools like jQuery, YUI etc. The total javascript footprint,
+once concatenated with <a href="http://requirejs.org/">require.js</a> for the project to
+date is around ~14kb + ~4.5kb (curl.js), which we are quite pleased with.</p>
+
+<p>To help us test we use <a href="http://docs.jquery.com/QUnit">QUnit</a>,
+<a href="http://sinonjs.org/">Sinon.JS</a>, and <a href="http://www.jshint.com/">jshint</a> to lint
+the code.</p>
+
+<p>We wrote and contributed to the community
+<a href="https://github.com/BBC/spassky">Spassky</a>, a simple test runner for our
+javascript.</p>
+
+<h2>CSS</h2>
+
+<p>We&#8217;ve used <a href="http://lesscss.org/">less</a> to produce all of the CSS. Mark writes
+about <a href="http://blog.responsivenews.co.uk/blog/2011/11/08/responsive-css-that-%0Ascales/">how they are structured on our
+blog</a>.</p>
+
+<p>Our icon set (cf. <a href="http://www.w3.org/TR/css3-fonts/">css3 type</a>) is generated
+via <a href="http://www.fontsquirrel.com">fontsquirrel.com</a>.</p>
+
+<p>The principal design work was done in
+<a href="http://www.adobe.com/products/illustrator.html">Illustrator</a>, whose vector
+format works nicely for previewing at different sizes on different devices.</p>
+
+<h2>PHP</h2>
+
+<p>The bulk of the page generation happens through the magic of PHP 5.3.2 on
+Apache with <a href="https://www.varnish-cache.org/">Varnish</a> sat in front of
+everything.</p>
+
+<p>For our <a href="http://www.responsivenews.co.uk">prototype</a> we used
+<a href="http://silex.sensiolabs.org/">Silex</a>, <a href="http://twig.sensiolabs.org/">Twig</a> and
+<a href="https://github.com/fabpot/Goutte">Goutte</a>, which had to make way for <a href="http://framework.zend.com/">Zend
+Framework 1.x</a> when it came to the <em>production</em>
+application development, inline with BBC standards.</p>
+
+<p>We use <a href="http://pimple.sensiolabs.org/">Pimple</a> for DI.</p>
+
+<h2>Testing</h2>
+
+<p><a href="https://github.com/facebook/xhprof">XHProf</a>, <a href="http://www.joedog.org%0A/siege-home/">Siege</a> and <a href="http://tsung.erlang-projects.org/">Tsung</a> have all be
+useful to performance test the application.</p>
+
+<p>All our features are documented in <a href="https://github.com/cucumber/cucumber/wiki/Gherkin">Gherkin
+DSL</a> and we use
+<a href="http://cukes.info/">Cucumber</a> to execute these features as a test suite every
+commit to master. As an aside, we found this tool did not make it easy for the
+team to visualize and search through the feature files so we wrote
+<a href="https://github.com/bbc/wally">Wally</a> to help with that. For smaller projects
+with less custom requirements, <a href="https://www.relishapp.com">Relish</a> might
+suffice.</p>
+
+<p>We use <a href="https://github.com/BBC/REST-assured">REST-assured</a>, another BBC open
+source project, to mock our API service calls.</p>
+
+<h2>API</h2>
+
+<p>The journalism (the words, pictures, the editorialised indexes etc.) that
+makes up the majority of the site is sourced (by PHP, see above) from a set of
+internal APIs, the primary one being the &#8216;Content API&#8217;.</p>
+
+<p>To store the news stories and indexes we use a <a href="http://www.marklogic.com/">Mark Logic XML Content
+Store</a> and XQuery for document retrieval. This is
+abstracted via a Java/Spring/CXF JSR 311 compliant REST service. The REST API
+is accessible via HTTPS with an appropriate certificate. The API is designed
+as a generic façade onto the Content Store allowing XML data to transformed
+into JSON using <a href="http://jackson.codehaus.org/">Jackson</a> and re-used in other
+BBC products. This service orchestrates XQueries and ensures that results are
+dynamically cached with a low &#8216;time-to-live&#8217; (TTL) expiry cross data centers
+using <a href="http://memcached.org/">Memcached</a>.</p>
+
+<h2>More</h2>
+
+<p>There&#8217;s dozens of other critical code, systems, tools that teams across the
+BBC provide to make our lives easier, far too many to list here and it would
+be far too unfair to single any particular team out. Occasionally they will
+pop up on the <a href="http://www.bbc.co.uk/blogs/bbcinternet/">BBC Internet blog</a> to
+showcase their wares.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">BBC News crew</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-13T00:00:00+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://BBC-News.github.com/post/19230899764/colophon" data-via="" data-counturl="http://BBC-News.github.com/post/19230899764/colophon" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/post/18948466399/cutting-the-mustard" title="Previous Post: Cutting the mustard">&laquo; Cutting the mustard</a>
+      
+      
+        <a class="basic-alignment right" href="/post/20004971477/v1-0" title="Next Post: v1.0">v1.0 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/post/21437180628/its-time-for-a-brand-new-kitchen">It's time for a brand new kitchen</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/21021136520/how-we-build-our-javascript">How we build our Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/20004971477/v1-0">v1.0</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/19230899764/colophon">Colophon</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/18948466399/cutting-the-mustard">Cutting the mustard</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Opinions expressed on this blog are those of a specific product team, and are not necessarily those of the BBC as a whole.
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

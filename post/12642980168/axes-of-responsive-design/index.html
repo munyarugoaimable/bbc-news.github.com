@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Axes of responsive design - Responsive News</title>
+  <meta name="author" content="BBC News crew">
+
+  
+  <meta name="description" content="The early responsive design literature talked about fluidity of the layout and embracing
+uncertain and uneven properties of web browsers but the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://BBC-News.github.com/post/12642980168/axes-of-responsive-design">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Responsive News" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <a href="/"><img src="http://static.responsivenews.co.uk/img/logo.png" alt="Responsive News" width="140" height="140"></a>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:BBC-News.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<!-- <ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Axes of Responsive Design</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-11T00:00:00+00:00" pubdate data-updated="true">Nov 11<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>The early responsive design <a href="http://www.abookapart.com/products%0A/responsive-web-design">literature</a> talked about fluidity of the layout and embracing
+uncertain and uneven properties of web browsers but the early
+<a href="http://www.bostonglobe.com/">pioneering</a> efforts have stopped at responsive
+<em>web design</em>, in essence an interaction and CSS problem ignoring the other
+aspects of the many and varied types of http clients.</p>
+
+<!-- more -->
+
+
+<p>I think over the coming months responsive design will evolve in to other
+areas, responsive <em>bandwidth design</em>, responsive <em>cpu design</em>, responsive
+<em>content design</em>, taking the mobile first approach to more than just screen
+width and applying it to all the properties a web client might possess.</p>
+
+<p>For our current project we are attempting to adapt and respond to the
+following axes:-</p>
+
+<ul>
+<li>Screensize - Orientation, resolution, viewport etc.</li>
+<li>Connection speed - Bandwidth can be fast, slow, offline or change over the course of a session.</li>
+<li>Standards support - CSS, JS, HTML5 etc.</li>
+<li>Colour - From monochrome, poor screens in different light, to rich high-resolution graphics.</li>
+<li>Interaction - Touch, mouse, voice, keyboards.</li>
+<li>Performance - CPU, memory, battery life.</li>
+</ul>
+
+
+<p>A lot of these properties we can detect already with simple <a href="http://www.w3.org/TR/css3-mediaqueries/">media
+queries</a> or plain old JS feature
+detection although some we&#8217;ll need to wait a little longer to sniff
+accurately.</p>
+
+<p>For example, there&#8217;s no good way to detect CPU on the client but as the <a href="http://www.w3.org/2009/dap/">DAP
+project</a> moves from W3 meetings to specifications
+and from nightlies to mainstream releases developers will have a set of
+detailed hooks on which our interfaces can adapt.</p>
+
+<p>Being able to dynamically respond to the users device in this way is a kind of
+surreptitious, ambient personalisation, giving the user a optimised experience
+without them having to visit a different URL.</p>
+
+<p>In the future one can imagine decorating html documents with a handle to
+control <a href="http://dev.w3.org/2009/dap/system-info/">performance intensive</a>
+aspects of pages like complex animations. Perhaps if the users battery is 10%
+we shut down background http requests or <a href="http://www.blackle.com/">tone down the whole
+UI</a>.</p>
+
+<p>The interesting challenge will be to see how we make this usable. A UI that
+adapts under your feet is an unpredictable one.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Matt Chadburn</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-11T00:00:00+00:00" pubdate data-updated="true">Nov 11<span>th</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://BBC-News.github.com/post/12642980168/axes-of-responsive-design" data-via="" data-counturl="http://BBC-News.github.com/post/12642980168/axes-of-responsive-design" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/11/08/responsive-css-that-scales/" title="Previous Post: Responsive CSS that scales">&laquo; Responsive CSS that scales</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/11/11/traffic/" title="Next Post: Traffic">Traffic &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/post/21437180628/its-time-for-a-brand-new-kitchen">It's time for a brand new kitchen</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/21021136520/how-we-build-our-javascript">How we build our Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/20004971477/v1-0">v1.0</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/19230899764/colophon">Colophon</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/18948466399/cutting-the-mustard">Cutting the mustard</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Opinions expressed on this blog are those of a specific product team, and are not necessarily those of the BBC as a whole.
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Cutting the mustard - Responsive News</title>
+  <meta name="author" content="BBC News crew">
+
+  
+  <meta name="description" content="The browser is a hostile development environment and supporting a wide range
+of desktop browsers can be tough work. One of the immediate challenges &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://BBC-News.github.com/post/18948466399/cutting-the-mustard">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Responsive News" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <a href="/"><img src="http://static.responsivenews.co.uk/img/logo.png" alt="Responsive News" width="140" height="140"></a>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:BBC-News.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<!-- <ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Cutting the Mustard</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-08T00:00:00+00:00" pubdate data-updated="true">Mar 8<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>The browser is a hostile development environment and supporting a wide range
+of desktop browsers can be tough work.</p>
+
+<p>One of the immediate challenges we discovered when we first started the
+<a href="http://responsivenews.co.uk">responsive news prototype</a> was the large range
+of devices that we would have to support. It terrified us. This article is
+about a solution we use to alleviate this problem.</p>
+
+<!-- more -->
+
+
+<h2>Stats and market evolution</h2>
+
+<p>Looking at <a href="https://raw.github.%0Acom/gist/1996423/f414cf348ebb7bf5ddfa6ac68e3941a9b37fedbd/gistfile1.txt">mobile devices that are accessing our service</a> in
+the early stages of our project highlighted the challenge. We have
+~80 <em>significant</em> browsers / operating system combinations regularly using our
+application across the globe and a long tail of hundreds more. In the four
+months since we first gathered the statistics there&#8217;s been many more releases
+and updates - Amazon&#8217;s Fire, Apple&#8217;s new iPad, Ice Cream Sandwich, Microsoft&#8217;s
+Mango.</p>
+
+<p>To support everything on desktop we typically have to test a dozen different
+browsers with a multitude of different configurations and subtle differences
+between major and minor version numbers across three operating systems. But
+developers are used to this, we have coping strategies - multi-browser
+installs, virtual and remote environments - and it&#8217;s a fairly well trodden
+ground.</p>
+
+<p>Responsive development stretches the problem further by introducing a more
+fragmented market across more
+<a href="http://blog.responsivenews.co.uk/blog/2011/11/11/axes-of-responsive-%0Adesign/">axes</a>. We have no multi-browser VMs available, we can&#8217;t remotely test a
+tactile UI, testing how your interface reacts when a phone enters a 3g network
+black spot is tricky.</p>
+
+<p>To that extent creating complex UI for the number of devices that
+<em>significantly trend</em>, say, user agents with a greater than 0.5% share of our
+audience, of <a href="http://www.bbc.co.uk/news">bbc.co.uk/news</a> is impossible.
+IMPOSSIBLE! There&#8217;s just too many of them.</p>
+
+<p>Another factor that makes developing for responsive design hard is the rate
+with which mobile users update their phones and browsers.</p>
+
+<p>In the developed world the typical contract length for a smart phone is
+between 18 months and 2 years so there&#8217;s a fairly quick upgrade cycle from
+year to year. A good proportion of the market that will always be using the
+latest technology and expect the latest/greatest experience. Conversely, the
+other half of our audience are using low-end devices, some developing
+economies appear to be using exclusively Nokia phones (usually running Opera
+or the native s40 browser), a trip to your local phone shop will highlight
+that manufactures are still pushing a vastly different set of phones to their
+customers.</p>
+
+<p>So this is the conundrum of our project from a technical perspective. How do
+we continue to support the vast number of older and less capable devices while
+delivering to our brief of creating a world class news experience tailored to
+smart phones and larger resolutions?</p>
+
+<p>The answer for us is a two-tiered responsive solution.</p>
+
+<h2>Creating a core experience</h2>
+
+<p>We make this manageable in the same you and everyone else in the industry does
+it: by having a lowest common denominator and developing towards that. So
+we&#8217;ve taken the decision to split the entire browser market into two, which we
+are currently calling &#8220;feature browsers&#8221; and &#8220;smart browsers&#8221;.</p>
+
+<p>Someone on the team started referring to them as &#8220;HTML4 browsers&#8221; and &#8220;HTML5
+browsers&#8221;, which we find is easier to communicate the sentiment to non-
+technical people.</p>
+
+<ol>
+<li>Comparison of the two states of the front page. On the left a simple
+&#8216;HTML4&#8217; experience, on the right, an progressively enhanced UI. Click the
+image for a <a href="http://static.responsivenews.co.uk/grabs%0A/front-page.png">higher resolution</a> graphic.<a href="http://static.responsivenews.co.uk/grabs/front-page.png"><img src="http://static.responsivenews.co.uk/grabs/front-%0Apage-thumb.png" alt="" /></a></li>
+</ol>
+
+
+<p>The first tier of support we call the <em>core experience</em>. This works on
+everything. I&#8217;ve seen it work on a Nokia E65, a Blackberry OS4, Kindle 1, a
+HTC Touch 2 running Win Mobile 6.5, a Samsung U900 Soul, a Commodore Vic20, my
+nan&#8217;s slipper and a toaster just selotaped to a TV. Likewise, GoogleBot, text-
+browsers like Lynx, folks that <a href="http://yfrog.com/kjh94pp">disable JavaScript</a>
+and so on are all assured a good level of service.</p>
+
+<p>The USP of the core experience is its speed. Our front page makes 1 request
+for the HTML document, a request graphic associated with the first story, then
+2 CSS requests, a stats web bug (a GIF) and 2 branding images - 7 request in
+total, at approximately 21kb. Everyone gets this initial payload.</p>
+
+<p>By comparison, our current wide-screen targetted <em>desktop</em> site currently
+measures in at ~500kb and 77 requests without javascript and ~700kb and 113
+requests with javascript.</p>
+
+<p>On top of this we layer our JavaScript application. Each page has a block of
+inline JavaScript that checks the capabilities of the browser before deciding
+whether to kick start the enhanced experience. Progressive enhancement,
+really, at heart. The JavaScript will include
+<a href="https://github.com/cujojs/curl">curl.js</a> into the page and then AMD modules
+will load additional functionality into the page (our drop-down section
+navigation for example). The USP of this UI is that it provide a news service
+that tailored to new hardware/software.</p>
+
+<h2>Mustard</h2>
+
+<p>In previous projects across the BBC this split has been phrased in <a href="http://www.bbc.co.uk/guidelines/futuremedia/technical/browser_support.s%0Ahtml">user agent
+terms</a>. We pick IE6 as the minimum entry point and coerce, hack and shoehorn
+our code to fit that requirement. But these days, with such a long tail of
+user agents now accessing the site, this becomes a fruitless exercise.
+<a href="https://developer.mozilla.org/en/Browser_Feature_Detection">Feature
+detection</a> is the
+obvious solution.</p>
+
+<p>The single line of JavaScript that decides whether or not the browser is
+<em>HTML4</em> or <em>HTML5</em> is this:-</p>
+
+<pre><code>if(querySelector in document
+     &amp;&amp; localStorage in window
+     &amp;&amp; addEventListener in window) {
+     // bootstrap the javascript application
+     }
+</code></pre>
+
+<p>As the application loads we earmark incapable browsers with the above code and
+exclude the bulk of the Javascript powered UI from them, leaving them with
+clean, concise, <em>core</em> experience.</p>
+
+<p>Here&#8217;s the justification for each condition:-</p>
+
+<ul>
+<li><p>document.querySelector - A large part of any JS library is its DOM selector. If the browser has native CSS selecting then it removes the need for a DOM selector. QuerySelector has been available in Firefox since 3.5 at least and has been working in webkit for ages. It also works in IE9.</p></li>
+<li><p>window.localStorage - Although we are not using it yet, we are planning on making considerable use of it. Imagine that if you first came to the mobile site we downloaded all the stories straight away and stored them in localStorage. They&#8217;d then be available to use while you are going through an areas of sketchy bandwidth.</p></li>
+<li><p>window.addEventListener - Another large part of any JS library is event support. Every browser made in the last 6 years (except IE8) supports DOM level 2 events. If the browser supports this then we know it has better standards support than IE8.</p></li>
+</ul>
+
+
+<p>So what do you think of this? Mocking me is possible via the comment form at
+the bottom of the page. This hopefully isn&#8217;t too controversial, Lanyrd&#8217;s
+recently launched mobile product does <a href="view-%0Asource:http://m.lanyrd.com/">a very similar thing</a>. This test effectively breaks the web browser
+market into these two groups:-</p>
+
+<p>HTML5 browsers:-</p>
+
+<ul>
+<li>IE9+</li>
+<li>Firefox 3.5+</li>
+<li>Opera 9+ (and probably further back)</li>
+<li>Safari 4+</li>
+<li>Chrome 1+ (I think)</li>
+<li>iPhone and iPad iOS1+</li>
+<li>Android phone and tablets 2.1+</li>
+<li>Blackberry OS6+</li>
+<li>Windows 7.5+ (new Mango version)</li>
+<li>Mobile Firefox (all the versions we tested)</li>
+<li>Opera Mobile (all the versions we tested)</li>
+</ul>
+
+
+<p>HTML4 browsers:-</p>
+
+<ul>
+<li>IE8-</li>
+<li>Blackberry OS5-</li>
+<li>Nokia S60 v6-</li>
+<li>Nokia S40 (all versions)</li>
+<li>All other Symbian variants</li>
+<li>Windows 7 phone (pre-Mango)</li>
+<li>…and many more that are too numerous to mention</li>
+</ul>
+
+
+<p>I call the test that determines what group a browser belongs to <em><a href="http://www.phrases.org.uk/meanings/cut-the-mustard.html">cutting the
+mustard</a></em>.</p>
+
+<h2>Brave new world</h2>
+
+<p>As a web developer &#8220;cutting the mustard&#8221; provides me with an opportunity to
+wipe the client-side development slate clean and start afresh. Over the last
+few years I feel that our industry has gotten lazy because of the crazy
+download speeds that broadband has given us. Everyone stopped worrying about
+how large their web pages were and added a ton of JS libraries, CSS files and
+massive images into the DOM. This has
+<a href="http://blog.responsiblyresponsive.com/2011/10/11/only-download-%0Awhat-you-are-going-to-use/">continued</a> on to mobile platforms that don&#8217;t always have
+broadband speeds or hardware capacity to render complex code.</p>
+
+<p>With our mustard test we can now develop JavaScript solutions that use native
+implementations of features that we have grown accustomed to using without
+having to download polyfilling libraries.</p>
+
+<p>The increasing popularity of mobile web browsing, and the availability of
+responsive web design has forced my team to refactor how we think a modern
+webpage should be built.</p>
+
+<p>Our product is the future of BBC News online. It&#8217;s responsive, works on
+everything, looks great and is very fast.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">BBC News crew</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-08T00:00:00+00:00" pubdate data-updated="true">Mar 8<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://BBC-News.github.com/post/18948466399/cutting-the-mustard" data-via="" data-counturl="http://BBC-News.github.com/post/18948466399/cutting-the-mustard" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/01/23/were-hiring/" title="Previous Post: We're Hiring">&laquo; We're Hiring</a>
+      
+      
+        <a class="basic-alignment right" href="/post/19230899764/colophon" title="Next Post: Colophon">Colophon &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/post/21437180628/its-time-for-a-brand-new-kitchen">It's time for a brand new kitchen</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/21021136520/how-we-build-our-javascript">How we build our Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/20004971477/v1-0">v1.0</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/19230899764/colophon">Colophon</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/18948466399/cutting-the-mustard">Cutting the mustard</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Opinions expressed on this blog are those of a specific product team, and are not necessarily those of the BBC as a whole.
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

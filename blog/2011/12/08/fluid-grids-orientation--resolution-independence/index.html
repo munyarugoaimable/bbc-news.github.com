@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Fluid grids, orientation & resolution independence - Responsive News</title>
+  <meta name="author" content="BBC News crew">
+
+  
+  <meta name="description" content="If you&#8217;ve spent any time building responsive
+websites with fluid
+grids, you will have encountered the shock of seeing your beautiful portrait &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://BBC-News.github.com/blog/2011/12/08/fluid-grids-orientation--resolution-independence/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Responsive News" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <a href="/"><img src="http://static.responsivenews.co.uk/img/logo.png" alt="Responsive News" width="140" height="140"></a>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:BBC-News.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<!-- <ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Fluid Grids, Orientation & Resolution Independence</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-08T00:00:00+00:00" pubdate data-updated="true">Dec 8<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>If you&#8217;ve spent any time building <a href="http://www.abookapart.com/products/responsive-web-design">responsive
+websites</a> with fluid
+grids, you will have encountered the shock of seeing your beautiful portrait
+layout distort when viewed in landscape mode (or vice-versa.)</p>
+
+<p>Load up this <a href="http://static.responsivenews.co.uk/examples%0A/resolution-independent-typography-1.html">example page</a> on an iPad and change the
+orientation to see the problem, or just check out the screengrabs.</p>
+
+<!-- more -->
+
+
+<ol>
+<li><a href="http://static.responsivenews.co.uk/examples/resolution-%0Aindependent-typography-1.html">Fluid grid</a> on iPad (portrait) | iPad
+(landscape)<img src="http://static.responsivenews.co.uk/examples/img/res-fixed-%0Aipad.jpg" alt="" /></li>
+</ol>
+
+
+<p>This happens because whilst the layout and embedded content (images, video
+etc) are sized in relation to the pixel width of the viewport, the typography
+is not. And whilst it isn&#8217;t too difficult to design with enough affordance for
+the variation caused by the iPad’s 4:3 aspect ratio - most (if not all)
+Android tablets have 16:9 displays. These screens make the orientation
+difference even more pronounced.</p>
+
+<ol>
+<li><a href="http://static.responsivenews.co.uk/examples/resolution-%0Aindependent-typography-1.html">Fluid grid</a> on Galaxy Tab 10.1 (portrait) | Galaxy Tab 10.1
+(landscape)<img src="http://static.responsivenews.co.uk/examples/img/res-fixed-%0Agalaxy.jpg" alt="" /></li>
+</ol>
+
+
+<p>On the landscape 16:9 display our example page looks dreadful. There&#8217;s more
+internal whitespace inside that article than there is content, changing the
+hierarchy of the page significantly.</p>
+
+<p>We could patch the issue by adding a load of additional media-queries and
+styles, but I don&#8217;t think creating endless design variants for minor screen-
+width differences really solves the problem. It&#8217;s also getting a bit close to
+designing for specific devices, whereas our goal with responsive design is to
+design for interaction behaviours (eg; design for &#8216;tablets&#8217;, not &#8216;iPad&#8217;.) We
+should be able to create a single method of storytelling that works for all
+tablet-sized devices without having to constantly rework details to account
+for new form-factors.</p>
+
+<h2>Create solutions,</h2>
+
+<p>not problems</p>
+
+<p>I want to use media-queries to switch between interfaces for &#8216;mobile&#8217;,
+&#8216;tablet&#8217; and &#8216;desktop&#8217; viewport ranges so that I can provide appropriate
+information density and linearity, and then have those interfaces scale to fit
+individual form factors. The fluid grid works precisely this way, so what
+we&#8217;re looking for is a way to make the typography similarly scale in
+proportion to the grid.</p>
+
+<p>By <a href="http://clagnut.com/blog/348/">specifying our font sizes in ems</a> we can
+adjust every font-size on the page by using media-queries to change the font-
+size set on the BODY or HTML element according to viewport width:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>        <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">960px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">html</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">font-size</span><span class="o">:</span> <span class="m">12px</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">@media</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">959px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">html</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">font-size</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This gives us a starting point - the styles will make your em-specified fonts
+smaller when the viewport is narrower than 960px - but it&#8217;s an arbitrary
+resizing. I want the fonts to scale proportionally (eg; when the viewport is
+50% of the &#8216;target&#8217; width the grid will shrink to fit that viewport, so I want
+the font-size to also be 50% of the &#8216;target&#8217; font-size.) To do this, we need
+to decide on a &#8216;target&#8217; viewport width in order to calculate our proportions.
+To make life simple, I&#8217;d suggest using the device you&#8217;re designing with as
+your &#8216;target&#8217; viewport width (which in my case 768px - an iPad in portrait
+orientation) so that you get a nice 10px:1em mapping between your font-sizes
+in Creative Suite and those on the page.</p>
+
+<p>Once I&#8217;ve decided on my target viewport of 768px (which I know I want to have
+a font-size of 10px), I just need subdivide that viewport by 10 to create a
+set of proportionally-correct font-size &#8216;bands&#8217;.</p>
+
+<ol>
+<li>Calculating a resolution independent font
+scale<img src="http://static.responsivenews.co.uk/examples/img/res-independent-font-%0Ascale.jpg" alt="" /></li>
+</ol>
+
+
+<p>Which looks like this in CSS:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>        <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">858px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">html</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">font-size</span><span class="o">:</span> <span class="m">12px</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">780px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">html</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">font-size</span><span class="o">:</span> <span class="m">11px</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">702px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">html</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">font-size</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">724px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">html</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">font-size</span><span class="o">:</span> <span class="m">9px</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">@media</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">623px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">html</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">font-size</span><span class="o">:</span> <span class="m">8px</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Which works beautifully in principle - but unfortunately we get some scaling
+distortions due to em sizing being contextual to the font-sizing of <em>any</em>
+parent DOM element, not just the HTML or BODY elements. Thankfully we do have
+a better alternative to the em - <a href="http://snook.ca/archives/html_and_css/font-size-with-rem">relative-em
+sizing</a> - which is
+contextual only to the HTML element and so perfect for this type of useage.
+Rem support is pretty much universal on modern mobiles and tablets, and falls
+back cleanly to px sizing if unsupported.</p>
+
+<p>Check out a <a href="http://static.responsivenews.co.uk/examples/resolution-independent-%0Atypography-2.html">revised version of the earlier example
+page</a> using the technique I&#8217;ve outlined above. It should scale
+cleanly in most modern desktop browsers and tablets.</p>
+
+<ol>
+<li><p><a href="http://static.responsivenews.co.uk/examples%0A/resolution-independent-typography-2.html">Resolution independent grid</a> on iPad (portrait) | iPad
+(landscape)<img src="http://static.responsivenews.co.uk/examples/img/res-%0Aindependent-ipad.jpg" alt="" /></p></li>
+<li><p><a href="http://static.responsivenews.co.uk/examples%0A/resolution-independent-typography-2.html">Resolution independent grid</a> on Galaxy Tab 10.1 (portrait) |
+Galaxy Tab 10.1 (landscape)<img src="http://static.responsivenews.co.uk/examples/img%0A/res-independent-galaxy.jpg" alt="" /></p></li>
+</ol>
+
+
+<h2>Examples in the wild</h2>
+
+<p>In the last couple of months a few sites have launched using similar
+approaches.</p>
+
+<p><a href="http://brownsdesign.com/about/">Browns recent redesign</a> is a horizontal-
+scrolling site, so they rather brilliantly use the height of the viewport set
+the base font-size in order to prevent the text from spilling below the scroll
+area.</p>
+
+<p>A few weeks after Browns site launched, Clearleft unveiled their placeholder
+site for <a href="http://2012.ampersandconf.com/">Ampersand 2012</a>, using the viewport
+width to set the base em size for the design.</p>
+
+<p><em>Note.</em> This article is a revised and expanded version of an
+<a href="http://blog.mhurrell.co.uk/post/6806897529/fluid-grids-and-%0Aorientation">article</a> I wrote on my personal blog in June 2011.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">BBC News crew</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-08T00:00:00+00:00" pubdate data-updated="true">Dec 8<span>th</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://BBC-News.github.com/blog/2011/12/08/fluid-grids-orientation--resolution-independence/" data-via="" data-counturl="http://BBC-News.github.com/blog/2011/12/08/fluid-grids-orientation--resolution-independence/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/11/11/traffic/" title="Previous Post: Traffic">&laquo; Traffic</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/01/23/were-hiring/" title="Next Post: We're Hiring">We're Hiring &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/post/21437180628/its-time-for-a-brand-new-kitchen">It's time for a brand new kitchen</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/21021136520/how-we-build-our-javascript">How we build our Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/20004971477/v1-0">v1.0</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/19230899764/colophon">Colophon</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/18948466399/cutting-the-mustard">Cutting the mustard</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Opinions expressed on this blog are those of a specific product team, and are not necessarily those of the BBC as a whole.
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

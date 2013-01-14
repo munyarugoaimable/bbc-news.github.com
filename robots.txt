@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://BBC-News.github.com/sitemap.xml 

@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>It's time for a brand new kitchen - Responsive News</title>
+  <meta name="author" content="BBC News crew">
+
+  
+  <meta name="description" content="A few weeks ago we blogged about our browser
+support and how we bootstrap our JavaScript. The post was called &#8220;Cutting
+the mustard&#8221; and &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://BBC-News.github.com/post/21437180628/its-time-for-a-brand-new-kitchen">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Responsive News" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <a href="/"><img src="http://static.responsivenews.co.uk/img/logo.png" alt="Responsive News" width="140" height="140"></a>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:BBC-News.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<!-- <ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">It's Time for a Brand New Kitchen</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-20T00:00:00+01:00" pubdate data-updated="true">Apr 20<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>A few weeks ago we <a href="http://blog.responsivenews.co.uk/blog/2012/03/08/cutting-the-%0Amustard/">blogged about our browser
+support</a> and how we bootstrap our JavaScript. The post was called &#8220;Cutting
+the mustard&#8221; and it got me 5 new followers on twitter (awesome!). Matthew
+Pennell responded with his blog post <a href="http://www.thewatchmakerproject.com/post/throwing-out-the-kitchen-%0Asink/">&#8220;Throwing out the kitchen
+sink&#8221;</a>.</p>
+
+<p>Matt said that our browser grading strategy is very aggressive, using
+progressive enhancement to only support modern browsers with the intended
+experience. Matt also said that this is unneccessary as JavaScript libraries
+(such as jQuery) allow us to support all browsers, and that worrying about the
+download speed was unneccessary. Here&#8217;s my re-response. Matt, if I&#8217;ve
+misquoted you out of context please tell me where, I&#8217;ll do my best to change
+it to the read good.</p>
+
+<p>My re-response is split into:</p>
+
+<ul>
+<li>Download size IS important</li>
+<li>Our progressive enhancement strategy means MOST browsers receive JavaScript</li>
+<li>But yes, IE8 is a big issue</li>
+</ul>
+
+
+<!-- more -->
+
+
+<p>My slightly inferior colleague Jane Cheeseley spoke about our use of
+JavaScript libraries (<a href="http://blog.responsivenews.co.uk/blog/2012/04/13/how-we-build-our-%0Ajavascript/">click
+here</a>) which I think answers Matt&#8217;s correct critique that JavaScript
+libraries are a good thing.</p>
+
+<p>To summarise the summary, the point I&#8217;d make is that speed is a feature, and
+that users just want the content. Our web browser support is definitely skewed
+towards the type of content that BBC News provides, so it might not be
+relevant to everyone, but its definitely the right thing to do.</p>
+
+<h2>Baby with the bath water</h2>
+
+<p>I said this in the original post and I&#8217;ll restate it now: broadband made us
+all lazy. Matt said &#8220;the golden rule I grew up with – no page should ever be
+over 100Kb – has long since been mothballed&#8221;, I disagree with Matt, I think
+this golden rule has become very relevant again. One assertion we&#8217;ve made in
+our team is that there is no mobile web.</p>
+
+<p>The idea of a &#8220;mobile web&#8221; means that there is somehow two different
+internets. Right now I&#8217;m writing this sentence on a laptop that is tethered to
+my phone for mobile broadband, tonight I&#8217;ll be reading twitter using the same
+phone but connected to the wifi at my house. Which one is the mobile web?</p>
+
+<p>Screen size != bandwidth capacity.</p>
+
+<p>But don&#8217;t be worried, because this is an excellent opportunity for us as a
+discipline to retake control of how web pages are made. The two most important
+attributes of a page to a user is:</p>
+
+<ul>
+<li>Can I view the data right now</li>
+<li>Is the data relevant to me</li>
+</ul>
+
+
+<p>And seeing as there is no such thing as the mobile web it means we need to
+make sure these two needs are meet for everyone. Matt talks about browser
+guidelines, and having a lowest common denominator with a list of A graded
+browsers. I think this also has to take into consideration another lowest
+common denominator: connection type.</p>
+
+<p>GPRS is the slowest connection speed we get in the UK, there is probably a
+slower one somewhere in the world, if so please comment below. GPRS is roughly
+equivalent to old dialup speeds, and so if you want a page to load within 10
+seconds you need to get the total file size of your page to be about 60kb.</p>
+
+<p><a href="http://m.guardian.co.uk">m.guardian.co.uk</a> is 50kb if you don&#8217;t include the
+adverts. jQuery is 70kb-ish uncompressed and 35kb compressed. Even the jQuery
+Core dev team<a href="http://blog.jquery.com/2011/11/08/building-a%0A-slimmer-jquery/"> think its too big</a> to be used on the &#8220;mobile web&#8221;.</p>
+
+<p>If you really believe that the 100kb rule should be mothballed, then what
+limit would you set a download size to be and why?</p>
+
+<h2>We are the 99%</h2>
+
+<p>In his post Matt also says &#8220;A single line of JavaScript leverages browser
+feature detection to decide whether you’re one of the chosen few:&#8221;, this is
+the part I disagree with most. You won&#8217;t be &#8220;one of the chosen few&#8221; as the
+vast majority of desktop browsers and a majority of mobile browsers pass this
+test.</p>
+
+<p>To recap, in the original post I split browsers into two camps: HTML4 and
+HTML5. The HTML4 camp does not pass the test, and so gets a straight forward,
+non JavaScript experience. This experience is very fast.</p>
+
+<p>The HTML5 camp does pass the test, so they download additional CSS (with fancy
+CSS selectors and modern CSS properties), an additional JavaScript file and
+extra content.</p>
+
+<p>The biggest difference in the two experiences is the extra content, for
+example the &#8220;most popular&#8221; tab is loaded in via AJAX for HTML5 browsers, where
+as a HTML4 browser would click the tab and get a new page load into the
+browser.</p>
+
+<p>All the core content is correctly still available to all browsers. It&#8217;s a
+progressive enhancement that still allows 100% of our users to view the
+content. The difference is in how they see that content. I&#8217;m not sure how else
+we can do this with responsive web design and still keep the file sizes at a
+reasonable size.</p>
+
+<h2>IE8, a browser too far</h2>
+
+<p>Matt rightly points out that IE8, sitting in the HTML4 camp and with a highly
+significant percentage of the traffic should not get the limited, HTML4
+experience as it is easy to accomodate for using a JavaScript library.</p>
+
+<p>This is where the mustard starts to get a bit too spicy. IE8 was almost a
+really great browser, however it isn&#8217;t. We&#8217;re biding our time with it.
+Sometime in the not so distant future the BBC News site will be completely
+responsive. However right now we do have two different products (www and m).</p>
+
+<p>As a developer I&#8217;d like to pursue the purist approach and keep IE8 a HTML4
+browser, however there will more than likely be pressure from management to
+give it more love because it will probably still have a significant user base.</p>
+
+<p>When that time comes we will need to make a decision about IE8, we will either
+keep it as a HTML4 browser or polyfill it using a conditional comment to
+include a HTML5 upgrade to make the browser cut the mustard. This is a special
+case though due to the unique way IE collects users and doesn&#8217;t automatically
+upgrade them. It&#8217;s also the one compromise we feel we will probably need to
+make. Web development is full of compromises.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tom Maslen</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-20T00:00:00+01:00" pubdate data-updated="true">Apr 20<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://BBC-News.github.com/post/21437180628/its-time-for-a-brand-new-kitchen" data-via="" data-counturl="http://BBC-News.github.com/post/21437180628/its-time-for-a-brand-new-kitchen" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/post/21021136520/how-we-build-our-javascript" title="Previous Post: How we build our Javascript">&laquo; How we build our Javascript</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/post/21437180628/its-time-for-a-brand-new-kitchen">It's time for a brand new kitchen</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/21021136520/how-we-build-our-javascript">How we build our Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/20004971477/v1-0">v1.0</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/19230899764/colophon">Colophon</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/18948466399/cutting-the-mustard">Cutting the mustard</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Opinions expressed on this blog are those of a specific product team, and are not necessarily those of the BBC as a whole.
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

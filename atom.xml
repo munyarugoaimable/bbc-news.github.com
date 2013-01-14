@@ -1,0 +1,1756 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Responsive News]]></title>
+  <link href="http://BBC-News.github.com/atom.xml" rel="self"/>
+  <link href="http://BBC-News.github.com/"/>
+  <updated>2013-01-14T16:07:13+00:00</updated>
+  <id>http://BBC-News.github.com/</id>
+  <author>
+    <name><![CDATA[BBC News crew]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[It's time for a brand new kitchen]]></title>
+    <link href="http://BBC-News.github.com/post/21437180628/its-time-for-a-brand-new-kitchen"/>
+    <updated>2012-04-20T00:00:00+01:00</updated>
+    <id>http://BBC-News.github.com/post/21437180628/its-time-for-a-brand-new-kitchen</id>
+    <content type="html"><![CDATA[<p>A few weeks ago we <a href="http://blog.responsivenews.co.uk/blog/2012/03/08/cutting-the-%0Amustard/">blogged about our browser
+support</a> and how we bootstrap our JavaScript. The post was called &#8220;Cutting
+the mustard&#8221; and it got me 5 new followers on twitter (awesome!). Matthew
+Pennell responded with his blog post <a href="http://www.thewatchmakerproject.com/post/throwing-out-the-kitchen-%0Asink/">&#8220;Throwing out the kitchen
+sink&#8221;</a>.</p>
+
+<p>Matt said that our browser grading strategy is very aggressive, using
+progressive enhancement to only support modern browsers with the intended
+experience. Matt also said that this is unneccessary as JavaScript libraries
+(such as jQuery) allow us to support all browsers, and that worrying about the
+download speed was unneccessary. Here&#8217;s my re-response. Matt, if I&#8217;ve
+misquoted you out of context please tell me where, I&#8217;ll do my best to change
+it to the read good.</p>
+
+<p>My re-response is split into:</p>
+
+<ul>
+<li>Download size IS important</li>
+<li>Our progressive enhancement strategy means MOST browsers receive JavaScript</li>
+<li>But yes, IE8 is a big issue</li>
+</ul>
+
+
+<!-- more -->
+
+
+<p>My slightly inferior colleague Jane Cheeseley spoke about our use of
+JavaScript libraries (<a href="http://blog.responsivenews.co.uk/blog/2012/04/13/how-we-build-our-%0Ajavascript/">click
+here</a>) which I think answers Matt&#8217;s correct critique that JavaScript
+libraries are a good thing.</p>
+
+<p>To summarise the summary, the point I&#8217;d make is that speed is a feature, and
+that users just want the content. Our web browser support is definitely skewed
+towards the type of content that BBC News provides, so it might not be
+relevant to everyone, but its definitely the right thing to do.</p>
+
+<h2>Baby with the bath water</h2>
+
+<p>I said this in the original post and I&#8217;ll restate it now: broadband made us
+all lazy. Matt said &#8220;the golden rule I grew up with – no page should ever be
+over 100Kb – has long since been mothballed&#8221;, I disagree with Matt, I think
+this golden rule has become very relevant again. One assertion we&#8217;ve made in
+our team is that there is no mobile web.</p>
+
+<p>The idea of a &#8220;mobile web&#8221; means that there is somehow two different
+internets. Right now I&#8217;m writing this sentence on a laptop that is tethered to
+my phone for mobile broadband, tonight I&#8217;ll be reading twitter using the same
+phone but connected to the wifi at my house. Which one is the mobile web?</p>
+
+<p>Screen size != bandwidth capacity.</p>
+
+<p>But don&#8217;t be worried, because this is an excellent opportunity for us as a
+discipline to retake control of how web pages are made. The two most important
+attributes of a page to a user is:</p>
+
+<ul>
+<li>Can I view the data right now</li>
+<li>Is the data relevant to me</li>
+</ul>
+
+
+<p>And seeing as there is no such thing as the mobile web it means we need to
+make sure these two needs are meet for everyone. Matt talks about browser
+guidelines, and having a lowest common denominator with a list of A graded
+browsers. I think this also has to take into consideration another lowest
+common denominator: connection type.</p>
+
+<p>GPRS is the slowest connection speed we get in the UK, there is probably a
+slower one somewhere in the world, if so please comment below. GPRS is roughly
+equivalent to old dialup speeds, and so if you want a page to load within 10
+seconds you need to get the total file size of your page to be about 60kb.</p>
+
+<p><a href="http://m.guardian.co.uk">m.guardian.co.uk</a> is 50kb if you don&#8217;t include the
+adverts. jQuery is 70kb-ish uncompressed and 35kb compressed. Even the jQuery
+Core dev team<a href="http://blog.jquery.com/2011/11/08/building-a%0A-slimmer-jquery/"> think its too big</a> to be used on the &#8220;mobile web&#8221;.</p>
+
+<p>If you really believe that the 100kb rule should be mothballed, then what
+limit would you set a download size to be and why?</p>
+
+<h2>We are the 99%</h2>
+
+<p>In his post Matt also says &#8220;A single line of JavaScript leverages browser
+feature detection to decide whether you’re one of the chosen few:&#8221;, this is
+the part I disagree with most. You won&#8217;t be &#8220;one of the chosen few&#8221; as the
+vast majority of desktop browsers and a majority of mobile browsers pass this
+test.</p>
+
+<p>To recap, in the original post I split browsers into two camps: HTML4 and
+HTML5. The HTML4 camp does not pass the test, and so gets a straight forward,
+non JavaScript experience. This experience is very fast.</p>
+
+<p>The HTML5 camp does pass the test, so they download additional CSS (with fancy
+CSS selectors and modern CSS properties), an additional JavaScript file and
+extra content.</p>
+
+<p>The biggest difference in the two experiences is the extra content, for
+example the &#8220;most popular&#8221; tab is loaded in via AJAX for HTML5 browsers, where
+as a HTML4 browser would click the tab and get a new page load into the
+browser.</p>
+
+<p>All the core content is correctly still available to all browsers. It&#8217;s a
+progressive enhancement that still allows 100% of our users to view the
+content. The difference is in how they see that content. I&#8217;m not sure how else
+we can do this with responsive web design and still keep the file sizes at a
+reasonable size.</p>
+
+<h2>IE8, a browser too far</h2>
+
+<p>Matt rightly points out that IE8, sitting in the HTML4 camp and with a highly
+significant percentage of the traffic should not get the limited, HTML4
+experience as it is easy to accomodate for using a JavaScript library.</p>
+
+<p>This is where the mustard starts to get a bit too spicy. IE8 was almost a
+really great browser, however it isn&#8217;t. We&#8217;re biding our time with it.
+Sometime in the not so distant future the BBC News site will be completely
+responsive. However right now we do have two different products (www and m).</p>
+
+<p>As a developer I&#8217;d like to pursue the purist approach and keep IE8 a HTML4
+browser, however there will more than likely be pressure from management to
+give it more love because it will probably still have a significant user base.</p>
+
+<p>When that time comes we will need to make a decision about IE8, we will either
+keep it as a HTML4 browser or polyfill it using a conditional comment to
+include a HTML5 upgrade to make the browser cut the mustard. This is a special
+case though due to the unique way IE collects users and doesn&#8217;t automatically
+upgrade them. It&#8217;s also the one compromise we feel we will probably need to
+make. Web development is full of compromises.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How we build our Javascript]]></title>
+    <link href="http://BBC-News.github.com/post/21021136520/how-we-build-our-javascript"/>
+    <updated>2012-04-13T00:00:00+01:00</updated>
+    <id>http://BBC-News.github.com/post/21021136520/how-we-build-our-javascript</id>
+    <content type="html"><![CDATA[<p>This post isn&#8217;t strictly about responsive design but hopefully it&#8217;ll give you
+some insight into how you can optimise your JS to help support the goals of a
+responsive site.</p>
+
+<!-- more -->
+
+
+<h2>Perception of page speed</h2>
+
+<p>Speed is really really <a href="http://www.useit.com/alertbox/response-%0Atimes.html">important</a>. There&#8217;s a ton of <a href="http://blog.kissmetrics.com/loading-%0Atime/">research</a> suggesting that users will simply leave a site and go elsewhere if they
+perceive a site to be slow. We&#8217;re currently developing the new <a href="http://m.bbc.co.uk/news">BBC News
+site</a> which has a large audience across the world
+with many users connecting via GPRS who would not appreciate a large 1MB
+monster.</p>
+
+<p>Therefore many of the design choices we make focus on optimisation, both in
+terms of the the size of the files and keeping the number of HTTP requests
+down to a minimum.</p>
+
+<h2>Cost of change</h2>
+
+<p>Over the last couple of years developers at the BBC have either been crying or
+celebrating the loss of their beloved BBC <a href="http://www.bbc.co.uk/glow/">Glow</a>
+JavaScript library. The library itself was awesome but for the BBC it was
+expensive to maintain. The consequence of announcing it&#8217;s demise and the
+adoption of jQuery meant sites had to upgrade. The migration effort to jQuery
+was pretty big.</p>
+
+<p>I say, &#8216;was pretty big&#8217;, but it&#8217;s not really complete.</p>
+
+<p>If you look at the source of many BBC sites built over the last couple of
+years (Eg, <a href="http://www.bbc.co.uk/news">News</a>,
+<a href="http://www.bbc.co.uk/iplayer">iPlayer</a> …) you&#8217;ll see many references to Glow
+v1. Even recent projects (Eg, <a href="http://www.bbc.co.uk/sport">Sport</a> - relaunch
+in February 2012) seem resigned to using Glow in parts of their application
+rather than migrating to something supported, such is the tight coupling of
+some functionality to that library and expense of moving away from it.</p>
+
+<p>And what is the reward for migration? To have to do it all again in 18 months
+time when the project outgrows whatever library you pick or the library falls
+out of favour, like last year&#8217;s wetlook leggings.</p>
+
+<p>To mitigate the effort needed in porting between libraries on a large site we
+took a look around for better solutions to the problem. We wanted to make sure
+our code was designed in a way that made swapping underlying code easier and
+cheaper.</p>
+
+<p>Addy describes the problem well in his <a href="http://addyosmani.com/scalablejs">Scalable JavaScript
+Patterns</a> talk and Stuart&#8217;s presentation,
+<a href="http://blog.stuartherbert.com/php/2011/03/20/following-up-%0Amy-beyond-frameworks-talk/">Beyond Frameworks</a> is also worth reading, albeit about PHP. Lastly,
+and fortunately for us in the context of this essay, browsers have come a long
+way in the last couple of years, with multiple vendors competing to support
+HTML5 and other new APIs. This has given us an
+<a href="http://blog.responsivenews.co.uk/blog/2012/03/08/cutting-the-%0Amustard/">opportunity</a> to make the most of native functionality and to remove the chains of
+the framework.</p>
+
+<h2>Micro libraries</h2>
+
+<p>I&#8217;m the kind of guy that would always go for the pick &#8216;n mix sweets over a
+pre-packaged bag of goodies. Especially as I hate the liquorish ones.</p>
+
+<p>jQuery is great but it ships with loads of stuff we don&#8217;t need (35Kb worth).
+We should only be sending the browser what code will actually be needed, and
+slowly backing in to the frameworks where we feel we need the support.
+Anything beyond that is wasteful and slows the experience of the site (think
+GPRS in the middle of nowhere).</p>
+
+<p>The idea with micro libraries is that you can cherry pick small self contained
+modules of code to do a specific job which helps to avoid large monolithic
+dependencies.</p>
+
+<p><a href="http://twitter.com/thomasfuchs">Thomas Fuchs</a> has put together an excellent
+<a href="http://www.microjs.com">resource</a> of javascript micro libraries and its a
+great place to explore and compare libraries for particular tasks.</p>
+
+<p>What we use:</p>
+
+<ul>
+<li><a href="https://github.com/ded/reqwest">Reqwest</a> - AJAX requests</li>
+<li><a href="https://github.com/ded/bonzo">Bonzo</a> - DOM utility methods</li>
+<li><a href="https://github.com/ded/qwery">Qwery</a> (mobile) - Selector wrapper around native functions</li>
+<li><a href="https://github.com/Wolfy87/EventEmitter">Event Emitter</a> - PubSub</li>
+<li><a href="https://github.com/cujojs/curl">Curl</a> - AMD Javascript loader</li>
+</ul>
+
+
+<p>N.b. Dojo have started to go down this route, hopefully jQuery will go modular
+too at some point.</p>
+
+<h2>Loading what you need</h2>
+
+<p>Aside from carefully picking and choosing our framework dependencies wouldn&#8217;t
+it be awesome if we could manage them like we do with with rubygems or npms?
+We can thanks to AMD.</p>
+
+<p>The <a href="https://github.com/amdjs/amdjs-%0Aapi/wiki/AMD">Asynchronous Module Definition (AMD)</a> spec allows us to inject specific libraries into the a chunk of
+code and have them downloaded to the browser only when we need them.</p>
+
+<p>This makes our pages load faster as we&#8217;re not waiting for the scripts to load
+at the start, instead they are deferred until we need them.</p>
+
+<p>AMD provides two global methods, <em>define</em> and <em>require</em>. The <em>define</em> method
+is used to create modules that will be used from other areas of the code:-</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="nx">define</span><span class="p">(</span>
+</span><span class='line'>        <span class="p">[</span><span class="nx">modules</span><span class="o">/</span><span class="nx">news</span><span class="p">,</span> <span class="nx">vendor</span><span class="o">/</span><span class="nx">reqwest</span><span class="p">,</span> <span class="nx">vendor</span><span class="o">/</span><span class="nx">pubsub</span><span class="p">],</span>
+</span><span class='line'>        <span class="kd">function</span><span class="p">(</span><span class="nx">news</span><span class="p">,</span> <span class="nx">reqwest</span><span class="p">,</span> <span class="nx">pubsub</span><span class="p">){</span>
+</span><span class='line'>            <span class="c1">// Code goes here</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, in the example above the dependencies <em>[&#8216;modules/news&#8217;, &#8216;vendor/reqwest&#8217;,
+&#8216;vendor/pubsub&#8217;]</em> are asynchronously loaded and references to them are mapped
+to the factory function arguments, which provides a local sandboxed version of
+them.</p>
+
+<p>The <em>require</em> method provides a sandboxed area where we can call in
+dependencies.</p>
+
+<p>AMD provides some big improvements to javascript including:-</p>
+
+<ol>
+<li>Groups code into manageable bits of functionality, that can be swapped in and out.</li>
+<li>Code is much easier to unit test.</li>
+<li>Code keeps out of the global scope, keeping it sandboxed on its own so it doesn&#8217;t mess with other code on the page.</li>
+<li>Faster scope lookups as you only deal with local variables.</li>
+<li>Modules are far more portable to other projects as dependencies are injected and not scattered.</li>
+<li>Conditionally require library code, for example different code for particular browsers.</li>
+</ol>
+
+
+<h2>Separation of business logic and DOM manipulation</h2>
+
+<p>My experience before of migrating projects from Glow to jQuery was that far
+too much business logic was tangled up with complicated DOM manipulation and
+when you needed to change the underlying library it was a total mess. Often it
+was simpler to start again.</p>
+
+<p>We don&#8217;t use a full fledged MVC framework on the News project as we want to
+keep things simple and lightweight but we still try and decouple code by
+separating out &#8216;things&#8217; into widgets, which each have a <em>logic</em> part and a
+<em>presentation</em> part. This allows us to isolate the areas where DOM libraries
+are being used and makes it far easier to understand where to go to change
+code.</p>
+
+<p>With the business logic module we write standard JavaScript that has no DOM
+manipulation in there whatsoever. You can still use libraries (if you really
+have to), but inject them using the AMD module pattern and use them sparingly.
+I.e. don&#8217;t wrap the structure of your code too deeply into the libraries API.</p>
+
+<p>Below is a simple example widget using this approach for our module that loads
+weather on to the front page :-</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="nx">define</span><span class="p">([</span><span class="nx">vendor</span><span class="o">/</span><span class="nx">pubsub</span><span class="p">,</span> <span class="nx">vendor</span><span class="o">/</span><span class="nx">ender</span><span class="o">/</span><span class="nx">reqwest</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">pubsub</span><span class="p">,</span> <span class="nx">reqwest</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">Weather</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">path</span> <span class="o">=</span> <span class="err">/weather;</span>
+</span><span class='line'>            <span class="c1">// subscribe to an external event</span>
+</span><span class='line'>            <span class="nx">pubsub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="nx">locator</span><span class="o">:</span><span class="nx">locationChanged</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">updateWeather</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">Weather</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">updateWeather</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">location</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="kd">var</span> <span class="nx">requestUrl</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">path</span> <span class="o">+</span> <span class="nx">location</span><span class="p">.</span><span class="nx">weather</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+</span><span class='line'>                <span class="nx">pubsub</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="nx">weather</span><span class="o">:</span><span class="nx">requestStarted</span><span class="p">);</span>
+</span><span class='line'>                <span class="nx">reqwest</span><span class="p">({</span>
+</span><span class='line'>                    <span class="nx">url</span><span class="o">:</span> <span class="nx">requestUrl</span><span class="p">,</span>
+</span><span class='line'>                    <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                        <span class="nx">pubsub</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="nx">weather</span><span class="o">:</span><span class="nx">success</span><span class="p">,</span> <span class="p">[</span><span class="nx">response</span><span class="p">,</span> <span class="nx">location</span><span class="p">.</span><span class="nx">weather</span><span class="p">.</span><span class="nx">id</span><span class="p">]);</span>
+</span><span class='line'>                    <span class="p">},</span>
+</span><span class='line'>                    <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                        <span class="nx">pubsub</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="nx">weather</span><span class="o">:</span><span class="nx">requestError</span><span class="p">,</span> <span class="p">[</span><span class="nx">error</span><span class="p">]);</span>
+</span><span class='line'>                    <span class="p">}</span>
+</span><span class='line'>                <span class="p">});</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="nx">Weather</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, not much more than a constructor that listens for an external event (in
+this case the user changing their location, Eg. from &#8216;London&#8217; to
+&#8216;Manchester&#8217;), which enacts some business logic (an XHR request) to fetch the
+weather for the new location.</p>
+
+<p>We&#8217;ve separated out the presentation of the weather to another module.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="nx">define</span><span class="p">([</span><span class="nx">vendor</span><span class="o">/</span><span class="nx">pubsub</span><span class="p">,</span> <span class="nx">vendor</span><span class="o">/</span><span class="nx">ender</span><span class="o">/</span><span class="nx">qwery</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">pubsub</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Constructor function</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">WeatherView</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">selectorContainer</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// cache dom references</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">selectorContainer</span><span class="p">);</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">weatherLink</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(.</span><span class="nx">weather</span><span class="o">-</span><span class="nx">link</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">);</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">weatherLinkHref</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">weatherLink</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="nx">href</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// set up event listeners</span>
+</span><span class='line'>            <span class="nx">news</span><span class="p">.</span><span class="nx">pubsub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="nx">weather</span><span class="o">:</span><span class="nx">success</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleSuccess</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// object methods</span>
+</span><span class='line'>        <span class="nx">WeatherView</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">setContent</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">this</span><span class="p">.</span><span class="nx">weatherLink</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">},</span>
+</span><span class='line'>            <span class="nx">setLink</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">locationId</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">this</span><span class="p">.</span><span class="nx">weatherLink</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="nx">href</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">weatherLinkHref</span> <span class="o">+</span> <span class="nx">forecast</span><span class="o">/</span> <span class="o">+</span> <span class="nx">locationId</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">},</span>
+</span><span class='line'>            <span class="nx">handleSuccess</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">,</span> <span class="nx">locationId</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">this</span><span class="p">.</span><span class="nx">setContent</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+</span><span class='line'>                <span class="k">this</span><span class="p">.</span><span class="nx">setLink</span><span class="p">(</span><span class="nx">locationId</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Return the constructor</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nx">WeatherView</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The presentation module listens for the &#8216;weather:success&#8217; event and, upon
+receiving that, rebuilds the UI.</p>
+
+<h2>Inter-module communication</h2>
+
+<p>To decouple the modules and make them easier to test we use the mediator
+pattern to communicate between them. The centralised pubsub system gives you a
+lot of flexibility and reduces the fragility of depending on the existence of
+foreign methods.</p>
+
+<p>The idea is that your object fires custom events and other objects which have
+subscribed to, will receive it. The publisher does not know about the other
+objects or care whether the other object has received it or not and, likewise,
+the subscriber does not know where the event came from. Think of it as fire
+and forget.</p>
+
+<p>PubSub is probably best explained with a diagram.</p>
+
+<ol>
+<li>PubSub<img src="http://dl.dropbox.com/u/8856415/pubsub.png" alt="" /></li>
+</ol>
+
+
+<p>And the code looks something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>        <span class="c1">// Create a new EventEmitter instance (which we usually inject into each module)</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">pubsub</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventEmitter</span><span class="p">();</span>
+</span><span class='line'>        <span class="p">...</span>
+</span><span class='line'>        <span class="c1">// The subscriber object registers for the event</span>
+</span><span class='line'>        <span class="nx">pubsub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="nx">menu</span><span class="o">:</span><span class="nx">top</span><span class="o">:</span><span class="nx">open</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">that</span><span class="p">.</span><span class="nx">sendStats</span><span class="p">();</span> <span class="c1">// remember this is not bound to the outer object</span>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>        <span class="p">...</span>
+</span><span class='line'>        <span class="c1">// The publisher emits an event to the registry</span>
+</span><span class='line'>        <span class="nx">pubsub</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="nx">menu</span><span class="o">:</span><span class="nx">top</span><span class="o">:</span><span class="nx">open</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// The Subscriber.sendStats() is then called by the central pubsub registry</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Next time</h2>
+
+<p>In the next part of this article we will go through how we test our
+JavaScript.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[v1.0]]></title>
+    <link href="http://BBC-News.github.com/post/20004971477/v1-0"/>
+    <updated>2012-03-27T00:00:00+01:00</updated>
+    <id>http://BBC-News.github.com/post/20004971477/v10</id>
+    <content type="html"><![CDATA[<p>Here&#8217;s what we&#8217;ve been working on for the past few months -
+<a href="http://m.bbc.co.uk/news">m.bbc.co.uk/news</a>.</p>
+
+<ol>
+<li>Responsive News<img src="https://p.twimg.com/ApAW_SFCMAIlYOk.jpg:large" alt="" /></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Colophon]]></title>
+    <link href="http://BBC-News.github.com/post/19230899764/colophon"/>
+    <updated>2012-03-13T00:00:00+00:00</updated>
+    <id>http://BBC-News.github.com/post/19230899764/colophon</id>
+    <content type="html"><![CDATA[<p>Here&#8217;s the technical stack we&#8217;ve used to build responsive news.</p>
+
+<p>Nb. BBC is a large(ish) organisation so we&#8217;ve already got a fully operational
+platform upon which to write applications, so I&#8217;ve not listed every last
+thing, just the tools and technology that we&#8217;ve selected to create our
+project.</p>
+
+<!-- more -->
+
+
+<h2>Javascript</h2>
+
+<p>We use <a href="https://github.com/ded/bonzo">bonzo</a> +
+<a href="https://github.com/ded/qwery">qwery</a> for dom manipulation and
+<a href="https://github.com/runningskull/reqwest">reqwest</a> for xhr (we use
+runningskull&#8217;s fork with jsonp and error callback support),
+<a href="https://github.com/cujojs/curl">curl.js</a> is our AMD loader and
+<a href="https://github.com/Wolfy87/EventEmitter">EventEmitter</a> manages all the
+pub/sub events between interface components. Mostly these were chosen because
+they were very lightweight, hence suitable for low bandwidth services, and
+more geared towards a <a href="http://blog.responsivenews.co.uk/blog/2012/03/08/cutting-the-%0Amustard/">modern definition of <em>browser
+support</em></a> than tools like jQuery, YUI etc. The total javascript footprint,
+once concatenated with <a href="http://requirejs.org/">require.js</a> for the project to
+date is around ~14kb + ~4.5kb (curl.js), which we are quite pleased with.</p>
+
+<p>To help us test we use <a href="http://docs.jquery.com/QUnit">QUnit</a>,
+<a href="http://sinonjs.org/">Sinon.JS</a>, and <a href="http://www.jshint.com/">jshint</a> to lint
+the code.</p>
+
+<p>We wrote and contributed to the community
+<a href="https://github.com/BBC/spassky">Spassky</a>, a simple test runner for our
+javascript.</p>
+
+<h2>CSS</h2>
+
+<p>We&#8217;ve used <a href="http://lesscss.org/">less</a> to produce all of the CSS. Mark writes
+about <a href="http://blog.responsivenews.co.uk/blog/2011/11/08/responsive-css-that-%0Ascales/">how they are structured on our
+blog</a>.</p>
+
+<p>Our icon set (cf. <a href="http://www.w3.org/TR/css3-fonts/">css3 type</a>) is generated
+via <a href="http://www.fontsquirrel.com">fontsquirrel.com</a>.</p>
+
+<p>The principal design work was done in
+<a href="http://www.adobe.com/products/illustrator.html">Illustrator</a>, whose vector
+format works nicely for previewing at different sizes on different devices.</p>
+
+<h2>PHP</h2>
+
+<p>The bulk of the page generation happens through the magic of PHP 5.3.2 on
+Apache with <a href="https://www.varnish-cache.org/">Varnish</a> sat in front of
+everything.</p>
+
+<p>For our <a href="http://www.responsivenews.co.uk">prototype</a> we used
+<a href="http://silex.sensiolabs.org/">Silex</a>, <a href="http://twig.sensiolabs.org/">Twig</a> and
+<a href="https://github.com/fabpot/Goutte">Goutte</a>, which had to make way for <a href="http://framework.zend.com/">Zend
+Framework 1.x</a> when it came to the <em>production</em>
+application development, inline with BBC standards.</p>
+
+<p>We use <a href="http://pimple.sensiolabs.org/">Pimple</a> for DI.</p>
+
+<h2>Testing</h2>
+
+<p><a href="https://github.com/facebook/xhprof">XHProf</a>, <a href="http://www.joedog.org%0A/siege-home/">Siege</a> and <a href="http://tsung.erlang-projects.org/">Tsung</a> have all be
+useful to performance test the application.</p>
+
+<p>All our features are documented in <a href="https://github.com/cucumber/cucumber/wiki/Gherkin">Gherkin
+DSL</a> and we use
+<a href="http://cukes.info/">Cucumber</a> to execute these features as a test suite every
+commit to master. As an aside, we found this tool did not make it easy for the
+team to visualize and search through the feature files so we wrote
+<a href="https://github.com/bbc/wally">Wally</a> to help with that. For smaller projects
+with less custom requirements, <a href="https://www.relishapp.com">Relish</a> might
+suffice.</p>
+
+<p>We use <a href="https://github.com/BBC/REST-assured">REST-assured</a>, another BBC open
+source project, to mock our API service calls.</p>
+
+<h2>API</h2>
+
+<p>The journalism (the words, pictures, the editorialised indexes etc.) that
+makes up the majority of the site is sourced (by PHP, see above) from a set of
+internal APIs, the primary one being the &#8216;Content API&#8217;.</p>
+
+<p>To store the news stories and indexes we use a <a href="http://www.marklogic.com/">Mark Logic XML Content
+Store</a> and XQuery for document retrieval. This is
+abstracted via a Java/Spring/CXF JSR 311 compliant REST service. The REST API
+is accessible via HTTPS with an appropriate certificate. The API is designed
+as a generic façade onto the Content Store allowing XML data to transformed
+into JSON using <a href="http://jackson.codehaus.org/">Jackson</a> and re-used in other
+BBC products. This service orchestrates XQueries and ensures that results are
+dynamically cached with a low &#8216;time-to-live&#8217; (TTL) expiry cross data centers
+using <a href="http://memcached.org/">Memcached</a>.</p>
+
+<h2>More</h2>
+
+<p>There&#8217;s dozens of other critical code, systems, tools that teams across the
+BBC provide to make our lives easier, far too many to list here and it would
+be far too unfair to single any particular team out. Occasionally they will
+pop up on the <a href="http://www.bbc.co.uk/blogs/bbcinternet/">BBC Internet blog</a> to
+showcase their wares.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cutting the mustard]]></title>
+    <link href="http://BBC-News.github.com/post/18948466399/cutting-the-mustard"/>
+    <updated>2012-03-08T00:00:00+00:00</updated>
+    <id>http://BBC-News.github.com/post/18948466399/cutting-the-mustard</id>
+    <content type="html"><![CDATA[<p>The browser is a hostile development environment and supporting a wide range
+of desktop browsers can be tough work.</p>
+
+<p>One of the immediate challenges we discovered when we first started the
+<a href="http://responsivenews.co.uk">responsive news prototype</a> was the large range
+of devices that we would have to support. It terrified us. This article is
+about a solution we use to alleviate this problem.</p>
+
+<!-- more -->
+
+
+<h2>Stats and market evolution</h2>
+
+<p>Looking at <a href="https://raw.github.%0Acom/gist/1996423/f414cf348ebb7bf5ddfa6ac68e3941a9b37fedbd/gistfile1.txt">mobile devices that are accessing our service</a> in
+the early stages of our project highlighted the challenge. We have
+~80 <em>significant</em> browsers / operating system combinations regularly using our
+application across the globe and a long tail of hundreds more. In the four
+months since we first gathered the statistics there&#8217;s been many more releases
+and updates - Amazon&#8217;s Fire, Apple&#8217;s new iPad, Ice Cream Sandwich, Microsoft&#8217;s
+Mango.</p>
+
+<p>To support everything on desktop we typically have to test a dozen different
+browsers with a multitude of different configurations and subtle differences
+between major and minor version numbers across three operating systems. But
+developers are used to this, we have coping strategies - multi-browser
+installs, virtual and remote environments - and it&#8217;s a fairly well trodden
+ground.</p>
+
+<p>Responsive development stretches the problem further by introducing a more
+fragmented market across more
+<a href="http://blog.responsivenews.co.uk/blog/2011/11/11/axes-of-responsive-%0Adesign/">axes</a>. We have no multi-browser VMs available, we can&#8217;t remotely test a
+tactile UI, testing how your interface reacts when a phone enters a 3g network
+black spot is tricky.</p>
+
+<p>To that extent creating complex UI for the number of devices that
+<em>significantly trend</em>, say, user agents with a greater than 0.5% share of our
+audience, of <a href="http://www.bbc.co.uk/news">bbc.co.uk/news</a> is impossible.
+IMPOSSIBLE! There&#8217;s just too many of them.</p>
+
+<p>Another factor that makes developing for responsive design hard is the rate
+with which mobile users update their phones and browsers.</p>
+
+<p>In the developed world the typical contract length for a smart phone is
+between 18 months and 2 years so there&#8217;s a fairly quick upgrade cycle from
+year to year. A good proportion of the market that will always be using the
+latest technology and expect the latest/greatest experience. Conversely, the
+other half of our audience are using low-end devices, some developing
+economies appear to be using exclusively Nokia phones (usually running Opera
+or the native s40 browser), a trip to your local phone shop will highlight
+that manufactures are still pushing a vastly different set of phones to their
+customers.</p>
+
+<p>So this is the conundrum of our project from a technical perspective. How do
+we continue to support the vast number of older and less capable devices while
+delivering to our brief of creating a world class news experience tailored to
+smart phones and larger resolutions?</p>
+
+<p>The answer for us is a two-tiered responsive solution.</p>
+
+<h2>Creating a core experience</h2>
+
+<p>We make this manageable in the same you and everyone else in the industry does
+it: by having a lowest common denominator and developing towards that. So
+we&#8217;ve taken the decision to split the entire browser market into two, which we
+are currently calling &#8220;feature browsers&#8221; and &#8220;smart browsers&#8221;.</p>
+
+<p>Someone on the team started referring to them as &#8220;HTML4 browsers&#8221; and &#8220;HTML5
+browsers&#8221;, which we find is easier to communicate the sentiment to non-
+technical people.</p>
+
+<ol>
+<li>Comparison of the two states of the front page. On the left a simple
+&#8216;HTML4&#8217; experience, on the right, an progressively enhanced UI. Click the
+image for a <a href="http://static.responsivenews.co.uk/grabs%0A/front-page.png">higher resolution</a> graphic.<a href="http://static.responsivenews.co.uk/grabs/front-page.png"><img src="http://static.responsivenews.co.uk/grabs/front-%0Apage-thumb.png" alt="" /></a></li>
+</ol>
+
+
+<p>The first tier of support we call the <em>core experience</em>. This works on
+everything. I&#8217;ve seen it work on a Nokia E65, a Blackberry OS4, Kindle 1, a
+HTC Touch 2 running Win Mobile 6.5, a Samsung U900 Soul, a Commodore Vic20, my
+nan&#8217;s slipper and a toaster just selotaped to a TV. Likewise, GoogleBot, text-
+browsers like Lynx, folks that <a href="http://yfrog.com/kjh94pp">disable JavaScript</a>
+and so on are all assured a good level of service.</p>
+
+<p>The USP of the core experience is its speed. Our front page makes 1 request
+for the HTML document, a request graphic associated with the first story, then
+2 CSS requests, a stats web bug (a GIF) and 2 branding images - 7 request in
+total, at approximately 21kb. Everyone gets this initial payload.</p>
+
+<p>By comparison, our current wide-screen targetted <em>desktop</em> site currently
+measures in at ~500kb and 77 requests without javascript and ~700kb and 113
+requests with javascript.</p>
+
+<p>On top of this we layer our JavaScript application. Each page has a block of
+inline JavaScript that checks the capabilities of the browser before deciding
+whether to kick start the enhanced experience. Progressive enhancement,
+really, at heart. The JavaScript will include
+<a href="https://github.com/cujojs/curl">curl.js</a> into the page and then AMD modules
+will load additional functionality into the page (our drop-down section
+navigation for example). The USP of this UI is that it provide a news service
+that tailored to new hardware/software.</p>
+
+<h2>Mustard</h2>
+
+<p>In previous projects across the BBC this split has been phrased in <a href="http://www.bbc.co.uk/guidelines/futuremedia/technical/browser_support.s%0Ahtml">user agent
+terms</a>. We pick IE6 as the minimum entry point and coerce, hack and shoehorn
+our code to fit that requirement. But these days, with such a long tail of
+user agents now accessing the site, this becomes a fruitless exercise.
+<a href="https://developer.mozilla.org/en/Browser_Feature_Detection">Feature
+detection</a> is the
+obvious solution.</p>
+
+<p>The single line of JavaScript that decides whether or not the browser is
+<em>HTML4</em> or <em>HTML5</em> is this:-</p>
+
+<pre><code>if(querySelector in document
+     &amp;&amp; localStorage in window
+     &amp;&amp; addEventListener in window) {
+     // bootstrap the javascript application
+     }
+</code></pre>
+
+<p>As the application loads we earmark incapable browsers with the above code and
+exclude the bulk of the Javascript powered UI from them, leaving them with
+clean, concise, <em>core</em> experience.</p>
+
+<p>Here&#8217;s the justification for each condition:-</p>
+
+<ul>
+<li><p>document.querySelector - A large part of any JS library is its DOM selector. If the browser has native CSS selecting then it removes the need for a DOM selector. QuerySelector has been available in Firefox since 3.5 at least and has been working in webkit for ages. It also works in IE9.</p></li>
+<li><p>window.localStorage - Although we are not using it yet, we are planning on making considerable use of it. Imagine that if you first came to the mobile site we downloaded all the stories straight away and stored them in localStorage. They&#8217;d then be available to use while you are going through an areas of sketchy bandwidth.</p></li>
+<li><p>window.addEventListener - Another large part of any JS library is event support. Every browser made in the last 6 years (except IE8) supports DOM level 2 events. If the browser supports this then we know it has better standards support than IE8.</p></li>
+</ul>
+
+
+<p>So what do you think of this? Mocking me is possible via the comment form at
+the bottom of the page. This hopefully isn&#8217;t too controversial, Lanyrd&#8217;s
+recently launched mobile product does <a href="view-%0Asource:http://m.lanyrd.com/">a very similar thing</a>. This test effectively breaks the web browser
+market into these two groups:-</p>
+
+<p>HTML5 browsers:-</p>
+
+<ul>
+<li>IE9+</li>
+<li>Firefox 3.5+</li>
+<li>Opera 9+ (and probably further back)</li>
+<li>Safari 4+</li>
+<li>Chrome 1+ (I think)</li>
+<li>iPhone and iPad iOS1+</li>
+<li>Android phone and tablets 2.1+</li>
+<li>Blackberry OS6+</li>
+<li>Windows 7.5+ (new Mango version)</li>
+<li>Mobile Firefox (all the versions we tested)</li>
+<li>Opera Mobile (all the versions we tested)</li>
+</ul>
+
+
+<p>HTML4 browsers:-</p>
+
+<ul>
+<li>IE8-</li>
+<li>Blackberry OS5-</li>
+<li>Nokia S60 v6-</li>
+<li>Nokia S40 (all versions)</li>
+<li>All other Symbian variants</li>
+<li>Windows 7 phone (pre-Mango)</li>
+<li>…and many more that are too numerous to mention</li>
+</ul>
+
+
+<p>I call the test that determines what group a browser belongs to <em><a href="http://www.phrases.org.uk/meanings/cut-the-mustard.html">cutting the
+mustard</a></em>.</p>
+
+<h2>Brave new world</h2>
+
+<p>As a web developer &#8220;cutting the mustard&#8221; provides me with an opportunity to
+wipe the client-side development slate clean and start afresh. Over the last
+few years I feel that our industry has gotten lazy because of the crazy
+download speeds that broadband has given us. Everyone stopped worrying about
+how large their web pages were and added a ton of JS libraries, CSS files and
+massive images into the DOM. This has
+<a href="http://blog.responsiblyresponsive.com/2011/10/11/only-download-%0Awhat-you-are-going-to-use/">continued</a> on to mobile platforms that don&#8217;t always have
+broadband speeds or hardware capacity to render complex code.</p>
+
+<p>With our mustard test we can now develop JavaScript solutions that use native
+implementations of features that we have grown accustomed to using without
+having to download polyfilling libraries.</p>
+
+<p>The increasing popularity of mobile web browsing, and the availability of
+responsive web design has forced my team to refactor how we think a modern
+webpage should be built.</p>
+
+<p>Our product is the future of BBC News online. It&#8217;s responsive, works on
+everything, looks great and is very fast.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[We're Hiring]]></title>
+    <link href="http://BBC-News.github.com/blog/2012/01/23/were-hiring/"/>
+    <updated>2012-01-23T00:00:00+00:00</updated>
+    <id>http://BBC-News.github.com/blog/2012/01/23/were-hiring</id>
+    <content type="html"><![CDATA[<p><em>[UPDATE] We&#8217;ve found someone to fill this post, but feel free to <a href="mailto:webdevelopers@bbc.co.uk">get in
+touch</a> with us about future opportunities.</em></p>
+
+<p>This position is a 3+ month contract for a UX developer on a <a href="http://blog.responsivenews.co.uk">responsive
+version of BBC News</a>.</p>
+
+<p>BBC News serves 10m people every day, our journalists produce stories in over
+30 languages. We need a talented UX developer to join our small team to help
+revamp the design and technology that powers the <a href="http://www.bbc.co.uk/news">BBC
+News</a> site.</p>
+
+<!-- more -->
+
+
+<h2>Essential Knowledge</h2>
+
+<ul>
+<li>HTML5. Semantic markup patterns for flexible reuse.</li>
+<li>CSS. Good understanding of modern techniques such as font-embedding and transitions, graceful degradation for older browsers.</li>
+<li>LESS/SASS. Creating <a href="http://blog.responsivenews.co.uk/blog/2011/11/08/responsive-css-that-scales/">DRY CSS</a> patterns to improve design consistency and flexibility.</li>
+<li>JAVASCRIPT. Excellent JavaScript programming skills, with knowledge of developing large, modular applications.</li>
+<li>DESIGN AWARE. Doesn&#8217;t need to be a &#8216;designer&#8217; as such, but a good understanding of design principles (information structure, brand consistency, eye for detail) and experience of working closely with designers is essential. Will be directly responsible for the quality of the product interface, so being able to confidently discuss and understand the principles and aims of the product is really important.</li>
+<li>UX. Good understanding (preferably some experience) of wireframes, user-flow diagrams, content-strategy documentation. Won&#8217;t be producing these documents, but it&#8217;s likely (and preferable) that you will be involved at this stage of the design process. Ability to discuss the software implications of design decisions.</li>
+<li>RESPONSIVE DESIGN. Creating interfaces and <a href="http://blog.responsivenews.co.uk/blog/2011/11/11/axes-of-responsive-design/">content architectures</a> that work on both desktop and mobile screens.</li>
+<li>CLIENT-SIDE PERFORMANCE. Understanding of how HTML/CSS techniques can affect page performance, in both modern and legacy browsers.</li>
+<li>ENGINEERING TOOLS. Experience of version control tools, continuous integration and <a href="https://github.com/bbc">automated build/test systems</a> would be an advantage.</li>
+<li>STRATEGIC THINKING. Interested in balancing the (sometimes conflicting) requirements of iterative products built on top of a long-lifespan platform.</li>
+</ul>
+
+
+<h2>Applications</h2>
+
+<p>The job will be initially based in London, W12 (White City) and it expected to
+move to W1 (Broadcasting House) over the spring/summer.</p>
+
+<p>Please include a brief CV along with a link to your code repository, portfolio
+or a couple of projects you&#8217;ve been proud of.</p>
+
+<p>Applications &amp; queries via
+<a href="mailto:webdevelopers@bbc.co.uk">webdevelopers@bbc.co.uk</a>.</p>
+
+<p>No agencies.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fluid grids, orientation & resolution independence]]></title>
+    <link href="http://BBC-News.github.com/blog/2011/12/08/fluid-grids-orientation--resolution-independence/"/>
+    <updated>2011-12-08T00:00:00+00:00</updated>
+    <id>http://BBC-News.github.com/blog/2011/12/08/fluid-grids-orientation&#8211;resolution-independence</id>
+    <content type="html"><![CDATA[<p>If you&#8217;ve spent any time building <a href="http://www.abookapart.com/products/responsive-web-design">responsive
+websites</a> with fluid
+grids, you will have encountered the shock of seeing your beautiful portrait
+layout distort when viewed in landscape mode (or vice-versa.)</p>
+
+<p>Load up this <a href="http://static.responsivenews.co.uk/examples%0A/resolution-independent-typography-1.html">example page</a> on an iPad and change the
+orientation to see the problem, or just check out the screengrabs.</p>
+
+<!-- more -->
+
+
+<ol>
+<li><a href="http://static.responsivenews.co.uk/examples/resolution-%0Aindependent-typography-1.html">Fluid grid</a> on iPad (portrait) | iPad
+(landscape)<img src="http://static.responsivenews.co.uk/examples/img/res-fixed-%0Aipad.jpg" alt="" /></li>
+</ol>
+
+
+<p>This happens because whilst the layout and embedded content (images, video
+etc) are sized in relation to the pixel width of the viewport, the typography
+is not. And whilst it isn&#8217;t too difficult to design with enough affordance for
+the variation caused by the iPad’s 4:3 aspect ratio - most (if not all)
+Android tablets have 16:9 displays. These screens make the orientation
+difference even more pronounced.</p>
+
+<ol>
+<li><a href="http://static.responsivenews.co.uk/examples/resolution-%0Aindependent-typography-1.html">Fluid grid</a> on Galaxy Tab 10.1 (portrait) | Galaxy Tab 10.1
+(landscape)<img src="http://static.responsivenews.co.uk/examples/img/res-fixed-%0Agalaxy.jpg" alt="" /></li>
+</ol>
+
+
+<p>On the landscape 16:9 display our example page looks dreadful. There&#8217;s more
+internal whitespace inside that article than there is content, changing the
+hierarchy of the page significantly.</p>
+
+<p>We could patch the issue by adding a load of additional media-queries and
+styles, but I don&#8217;t think creating endless design variants for minor screen-
+width differences really solves the problem. It&#8217;s also getting a bit close to
+designing for specific devices, whereas our goal with responsive design is to
+design for interaction behaviours (eg; design for &#8216;tablets&#8217;, not &#8216;iPad&#8217;.) We
+should be able to create a single method of storytelling that works for all
+tablet-sized devices without having to constantly rework details to account
+for new form-factors.</p>
+
+<h2>Create solutions,</h2>
+
+<p>not problems</p>
+
+<p>I want to use media-queries to switch between interfaces for &#8216;mobile&#8217;,
+&#8216;tablet&#8217; and &#8216;desktop&#8217; viewport ranges so that I can provide appropriate
+information density and linearity, and then have those interfaces scale to fit
+individual form factors. The fluid grid works precisely this way, so what
+we&#8217;re looking for is a way to make the typography similarly scale in
+proportion to the grid.</p>
+
+<p>By <a href="http://clagnut.com/blog/348/">specifying our font sizes in ems</a> we can
+adjust every font-size on the page by using media-queries to change the font-
+size set on the BODY or HTML element according to viewport width:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>        <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">960px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">html</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">font-size</span><span class="o">:</span> <span class="m">12px</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">@media</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">959px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">html</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">font-size</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This gives us a starting point - the styles will make your em-specified fonts
+smaller when the viewport is narrower than 960px - but it&#8217;s an arbitrary
+resizing. I want the fonts to scale proportionally (eg; when the viewport is
+50% of the &#8216;target&#8217; width the grid will shrink to fit that viewport, so I want
+the font-size to also be 50% of the &#8216;target&#8217; font-size.) To do this, we need
+to decide on a &#8216;target&#8217; viewport width in order to calculate our proportions.
+To make life simple, I&#8217;d suggest using the device you&#8217;re designing with as
+your &#8216;target&#8217; viewport width (which in my case 768px - an iPad in portrait
+orientation) so that you get a nice 10px:1em mapping between your font-sizes
+in Creative Suite and those on the page.</p>
+
+<p>Once I&#8217;ve decided on my target viewport of 768px (which I know I want to have
+a font-size of 10px), I just need subdivide that viewport by 10 to create a
+set of proportionally-correct font-size &#8216;bands&#8217;.</p>
+
+<ol>
+<li>Calculating a resolution independent font
+scale<img src="http://static.responsivenews.co.uk/examples/img/res-independent-font-%0Ascale.jpg" alt="" /></li>
+</ol>
+
+
+<p>Which looks like this in CSS:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>        <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">858px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">html</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">font-size</span><span class="o">:</span> <span class="m">12px</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">780px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">html</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">font-size</span><span class="o">:</span> <span class="m">11px</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">702px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">html</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">font-size</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">724px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">html</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">font-size</span><span class="o">:</span> <span class="m">9px</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">@media</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">623px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">html</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">font-size</span><span class="o">:</span> <span class="m">8px</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Which works beautifully in principle - but unfortunately we get some scaling
+distortions due to em sizing being contextual to the font-sizing of <em>any</em>
+parent DOM element, not just the HTML or BODY elements. Thankfully we do have
+a better alternative to the em - <a href="http://snook.ca/archives/html_and_css/font-size-with-rem">relative-em
+sizing</a> - which is
+contextual only to the HTML element and so perfect for this type of useage.
+Rem support is pretty much universal on modern mobiles and tablets, and falls
+back cleanly to px sizing if unsupported.</p>
+
+<p>Check out a <a href="http://static.responsivenews.co.uk/examples/resolution-independent-%0Atypography-2.html">revised version of the earlier example
+page</a> using the technique I&#8217;ve outlined above. It should scale
+cleanly in most modern desktop browsers and tablets.</p>
+
+<ol>
+<li><p><a href="http://static.responsivenews.co.uk/examples%0A/resolution-independent-typography-2.html">Resolution independent grid</a> on iPad (portrait) | iPad
+(landscape)<img src="http://static.responsivenews.co.uk/examples/img/res-%0Aindependent-ipad.jpg" alt="" /></p></li>
+<li><p><a href="http://static.responsivenews.co.uk/examples%0A/resolution-independent-typography-2.html">Resolution independent grid</a> on Galaxy Tab 10.1 (portrait) |
+Galaxy Tab 10.1 (landscape)<img src="http://static.responsivenews.co.uk/examples/img%0A/res-independent-galaxy.jpg" alt="" /></p></li>
+</ol>
+
+
+<h2>Examples in the wild</h2>
+
+<p>In the last couple of months a few sites have launched using similar
+approaches.</p>
+
+<p><a href="http://brownsdesign.com/about/">Browns recent redesign</a> is a horizontal-
+scrolling site, so they rather brilliantly use the height of the viewport set
+the base font-size in order to prevent the text from spilling below the scroll
+area.</p>
+
+<p>A few weeks after Browns site launched, Clearleft unveiled their placeholder
+site for <a href="http://2012.ampersandconf.com/">Ampersand 2012</a>, using the viewport
+width to set the base em size for the design.</p>
+
+<p><em>Note.</em> This article is a revised and expanded version of an
+<a href="http://blog.mhurrell.co.uk/post/6806897529/fluid-grids-and-%0Aorientation">article</a> I wrote on my personal blog in June 2011.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Traffic]]></title>
+    <link href="http://BBC-News.github.com/blog/2011/11/11/traffic/"/>
+    <updated>2011-11-11T00:00:00+00:00</updated>
+    <id>http://BBC-News.github.com/blog/2011/11/11/traffic</id>
+    <content type="html"><![CDATA[<p>The exact peak date of the <a href="http://en.wikipedia.org/wiki/Hubbert_peak_theory">Hubbert
+curve</a> has been predicted by
+many scientists but isn&#8217;t known. And anyhow, it&#8217;s not about exactness more
+about communicating a period of transition for the oil industry, the
+dependency on a status quo, the urgency in changing a collective mindset.</p>
+
+<!-- more -->
+
+
+<p>For me, <a href="http://www.alistapart.com/articles/responsive-web-%0Adesign/">responsive design</a>, <a href="http://www.lukew.com/ff/entry.asp?933">mobile first</a>, <a href="http://www.slideshare.net/bryanrieger/rethinking-the-mobile-%0Aweb-by-yiibu">rethinking
+the mobile web</a> all emerge from an analogous point in time where mobile internet
+traffic will exceed desktop traffic. Not so much a question of &#8216;if&#8217; but
+&#8216;when&#8217;.</p>
+
+<p>Either way, the mobile, tv, tablet markets will outstrip the growth of the
+traditional 1024x768 desktop in the coming years and this will change the way
+we think about building websites.</p>
+
+<p>The status quo of designing fixed-width (or at least a <em>minimum width</em>)
+interfaces for people with larger screens and then seeing the non-desktop
+services as secondary projects becomes counterintuitive if the majority of
+your audience are accessing your product by some other means, and that the
+means becomes ever more varied.</p>
+
+<p>If you build many <em>views</em> of your service, which one gets the most investment
+first?</p>
+
+<p>The most capable platform? The one with the most users now? The one you think
+might have the most users when you deliver the project? The one your
+management team <a href="http://en.wikipedia.org/wiki/BlackBerry_Curve">uses</a>?</p>
+
+<p>Do you split your investment (and team) across each one thereby reducing your
+velocity on each individual platform? Or do you linearise your projects and
+stagger their delivery across a year or two?</p>
+
+<p>Sure, companies can outsource or temporarily expand their teams to build
+things in parallel, which isn&#8217;t free, but when the money dries up you&#8217;ll have
+twice or thrice the amount of code to maintain and extend, which also isn&#8217;t
+free or sustainable.</p>
+
+<p>You&#8217;ll be chasing your tail whatever you pick unless you&#8217;ve got enough
+developers to build &amp; maintain a few versions of everything, but that is
+really hard.</p>
+
+<p>Responsive design solves the traffic problem by focusing development effort on
+a single interface, your internal teams all become feature oriented, not
+platform specialists.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Axes of responsive design]]></title>
+    <link href="http://BBC-News.github.com/post/12642980168/axes-of-responsive-design"/>
+    <updated>2011-11-11T00:00:00+00:00</updated>
+    <id>http://BBC-News.github.com/post/12642980168/axes-of-responsive-design</id>
+    <content type="html"><![CDATA[<p>The early responsive design <a href="http://www.abookapart.com/products%0A/responsive-web-design">literature</a> talked about fluidity of the layout and embracing
+uncertain and uneven properties of web browsers but the early
+<a href="http://www.bostonglobe.com/">pioneering</a> efforts have stopped at responsive
+<em>web design</em>, in essence an interaction and CSS problem ignoring the other
+aspects of the many and varied types of http clients.</p>
+
+<!-- more -->
+
+
+<p>I think over the coming months responsive design will evolve in to other
+areas, responsive <em>bandwidth design</em>, responsive <em>cpu design</em>, responsive
+<em>content design</em>, taking the mobile first approach to more than just screen
+width and applying it to all the properties a web client might possess.</p>
+
+<p>For our current project we are attempting to adapt and respond to the
+following axes:-</p>
+
+<ul>
+<li>Screensize - Orientation, resolution, viewport etc.</li>
+<li>Connection speed - Bandwidth can be fast, slow, offline or change over the course of a session.</li>
+<li>Standards support - CSS, JS, HTML5 etc.</li>
+<li>Colour - From monochrome, poor screens in different light, to rich high-resolution graphics.</li>
+<li>Interaction - Touch, mouse, voice, keyboards.</li>
+<li>Performance - CPU, memory, battery life.</li>
+</ul>
+
+
+<p>A lot of these properties we can detect already with simple <a href="http://www.w3.org/TR/css3-mediaqueries/">media
+queries</a> or plain old JS feature
+detection although some we&#8217;ll need to wait a little longer to sniff
+accurately.</p>
+
+<p>For example, there&#8217;s no good way to detect CPU on the client but as the <a href="http://www.w3.org/2009/dap/">DAP
+project</a> moves from W3 meetings to specifications
+and from nightlies to mainstream releases developers will have a set of
+detailed hooks on which our interfaces can adapt.</p>
+
+<p>Being able to dynamically respond to the users device in this way is a kind of
+surreptitious, ambient personalisation, giving the user a optimised experience
+without them having to visit a different URL.</p>
+
+<p>In the future one can imagine decorating html documents with a handle to
+control <a href="http://dev.w3.org/2009/dap/system-info/">performance intensive</a>
+aspects of pages like complex animations. Perhaps if the users battery is 10%
+we shut down background http requests or <a href="http://www.blackle.com/">tone down the whole
+UI</a>.</p>
+
+<p>The interesting challenge will be to see how we make this usable. A UI that
+adapts under your feet is an unpredictable one.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Responsive CSS that scales]]></title>
+    <link href="http://BBC-News.github.com/blog/2011/11/08/responsive-css-that-scales/"/>
+    <updated>2011-11-08T00:00:00+00:00</updated>
+    <id>http://BBC-News.github.com/blog/2011/11/08/responsive-css-that-scales</id>
+    <content type="html"><![CDATA[<p>CSS for a big site is different to CSS for a small, or even medium sized-site.
+The way CSS was intended, when you create a new piece of functionality for
+your website you simply write some new CSS to style it - easy.</p>
+
+<!-- more -->
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>        <span class="nf">#feature-4</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">width</span><span class="o">:</span> <span class="m">50</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'>            <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+</span><span class='line'>            <span class="k">clear</span><span class="o">:</span> <span class="k">both</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nf">#feature-4</span> <span class="nt">article</span><span class="nd">:first-child</span> <span class="nt">h2</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">#</span> <span class="nt">Feature</span> <span class="nt">4</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">##</span> <span class="nt">Something</span> <span class="nt">happened</span><span class="o">!</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://static.responsivenews.co.uk/examples/img/less-css-vis1.png" alt="" /></p>
+
+<p>This works well for a small website as because it gives you direct control
+over every element. For a medium-sized site you can scale your CSS by applying
+a few HTML patterns to your features, then simply writing your CSS to style
+those patterns rather than the features individually.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>        <span class="nc">.feature-4</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">width</span><span class="o">:</span> <span class="m">50</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'>            <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+</span><span class='line'>            <span class="k">clear</span><span class="o">:</span> <span class="k">both</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nc">.latest-item</span> <span class="nt">h2</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">#</span> <span class="nt">Feature</span> <span class="nt">4</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">##</span> <span class="nt">Something</span> <span class="nt">happened</span><span class="o">!</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then you try to write CSS for a big website. A website with hundreds of
+features, hundreds of thousands of pages. A site where you need to ensure
+features remain consistant when they are moved to places you never expected
+them to go, whilst providing a robust canvas for external developers to drop
+untested code on the page expecting it to &#8216;just work&#8217;. Whilst many languages
+let you manage your code by scoping it to particular features, the best option
+CSS <a href="http://www.w3.org/TR/css3-namespace/">currently</a> offers is the ability to
+use classnames or IDs to namespace areas of your HTML. This works for
+individual features, but if you attempt to use namespacing higher up the HTML
+document tree to share code amongst multiple features you can easily end up
+with an unpredictable
+<a href="http://www.w3.org/TR/CSS2/cascade.html#cascade">cascade</a> of conflicting style
+rules that are only possible to control by writing <em>further</em> styles with
+increased selector <a href="http://diythemes.com/thesis/css-specificity-%0Athesis/">specificity</a>.</p>
+
+<ol>
+<li>Messy CSS optimisation<img src="http://static.responsivenews.co.uk/examples/img%0A/less-css-figure1.png" alt="" /></li>
+</ol>
+
+
+<p>Optimising CSS for re-use in the present almost always ends up limiting your
+ability to reuse that CSS in unexpected ways in the future. This leads to the
+situation apparent on many large websites where developers pragmatically bolt
+layer-upon-layer of high-specifity CSS overrides on top of prematurely
+optimised global styles. Whilst this works, it causes such a complex
+environment of style inherentance that designs very quickly become unwieldy to
+change.</p>
+
+<p>Look at fig.1. If you had a bug in HTML feature #4, which CSS file would you
+look at first? Once you track down &amp; fix the bug, how do you predict if any
+other HTML features might have been using the style you just changed? Should
+they all be retested to make sure they haven&#8217;t been affected by the change?
+How about branching a feature for some multivariate testing, or retiring one
+completely?</p>
+
+<h2>Object Oriented CSS</h2>
+
+<ol>
+<li>OO-CSS structure<img src="http://static.responsivenews.co.uk/examples/img/less-%0Acss-figure2.png" alt="" /></li>
+</ol>
+
+
+<p>Recognising this problem, Nicole Sullivan introduced the idea of <a href="http://www.stubbornella.org/content/2009/02/28/object-oriented-%0Acss-grids-on-github/">Object
+Oriented CSS</a> a couple of years ago. I&#8217;m not going to discuss the
+technique in depth here, but OO-CSS is an intelligent solution to a real
+problem and contains a lot of good ideas. The principle of separating the core
+visual language &amp; grid from your feature styling gives you a much more
+straightforward contract between between HTML and CSS fig.2 and allows you to
+confidently re-use and adapt code with less risk of unexpected consequences.
+But the technique also comes with a significant sticking point - it requires
+reuseable styles to be defined using explicit classnames (such as .left-
+column) rather than semantic classnames (.main-content).</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>    <span class="nc">.column-1of2</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">width</span><span class="o">:</span> <span class="m">50</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nc">.left-column</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">clear</span><span class="o">:</span> <span class="k">both</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nc">.highlight</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="err">#</span> <span class="nt">Timeline</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="err">##</span> <span class="nt">Something</span> <span class="nt">happened</span><span class="o">!</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://static.responsivenews.co.uk/examples/img/less-css-vis1.png" alt="" /></p>
+
+<p>This is a problem because it blurs the boundaries between style &amp; content. A
+core part of the web-standards movement was the idea that we can insulate our
+content from conflicting browser behaviour by separating it from visual
+styling and behaviour. By using explicit classnames we&#8217;re in effect reverting
+back to the inline styles of old.</p>
+
+<p>Pragmatically speaking, whilst this might be a compromise worth taking for
+traditional single-view websites, but it&#8217;s a big problem for <a href="http://www.alistapart.com/articles/responsive-web-design/">responsive
+design</a>. At tablet
+size your <em>.left-column</em> div might be styled as left-hand column, but at
+smartphone size it becomes full-width. Which classname would you use in that
+situation; <em>.left-column</em> &amp; <em>.full-column</em>?</p>
+
+<h2>Object Oriented CSS using LESS</h2>
+
+<ol>
+<li>LESS structure<img src="http://static.responsivenews.co.uk/examples/img/less-css-%0Afigure3.png" alt="" /></li>
+</ol>
+
+
+<p>We can take the core principles of Object Oriented CSS - separating core
+visual language &amp; grid styles from HTML feature styles, but rather than
+constructing these styles inline in the HTML with classnames we can use a CSS
+compiler to construct feature styles at the stylesheet level. There are a few
+CSS compiler languages available, but we&#8217;ve opted for LESS due to its
+similarity to vanilla CSS syntax and because it runs on node.js (which we
+already had running in our build process).</p>
+
+<p>A styleguide LESS file would look like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>        <span class="nc">.column-1of2</span> <span class="o">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">width</span><span class="o">:</span> <span class="m">50</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'>            <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nc">.left-column</span> <span class="o">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">clear</span><span class="o">:</span> <span class="k">both</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nc">.highlight</span> <span class="o">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We can then create a LESS file for each HTML feature we produce, each of which
+simply reference the styleguide classes.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>    <span class="nc">.feature-4</span> <span class="p">{</span>
+</span><span class='line'>        <span class="o">.</span><span class="n">column</span><span class="m">-1</span><span class="n">of2</span><span class="p">;</span>
+</span><span class='line'>        <span class="o">.</span><span class="k">left</span><span class="o">-</span><span class="n">column</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">article</span><span class="o">:</span><span class="n">first</span><span class="o">-</span><span class="n">child</span> <span class="n">h2</span> <span class="err">{</span>
+</span><span class='line'>            <span class="o">.</span><span class="n">highlight</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="err">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A LESS &#8216;compiler&#8217; file pulls in both the styleguide and feature file:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>        <span class="k">@import</span> <span class="o">(</span><span class="nt">styleguide</span><span class="nc">.less</span><span class="o">)</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">@import</span> <span class="o">(</span><span class="nt">feature-4</span><span class="nc">.less</span><span class="o">)</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And outputs a CSS file that looks like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>        <span class="nc">.feature-4</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">width</span><span class="o">:</span> <span class="m">50</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'>            <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+</span><span class='line'>            <span class="k">clear</span><span class="o">:</span> <span class="k">both</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nc">.feature-4</span> <span class="nt">article</span><span class="nd">:first-child</span> <span class="nt">h2</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">#</span> <span class="nt">Feature</span> <span class="nt">4</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">##</span> <span class="nt">Something</span> <span class="nt">happened</span><span class="o">!</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>fig.3. You can encourage re-use even further by creating UI patterns from your
+styleguide.</p>
+
+<p>Styleguide with UI pattern:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>        <span class="nc">.column-1of2</span> <span class="o">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">width</span><span class="o">:</span> <span class="m">50</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'>            <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nc">.left-column</span> <span class="o">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">clear</span><span class="o">:</span> <span class="k">both</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nc">.highlight</span> <span class="o">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nc">.pattern-1</span> <span class="o">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="o">.</span><span class="n">column</span><span class="m">-1</span><span class="n">of2</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="n">article</span><span class="o">:</span><span class="n">first</span><span class="o">-</span><span class="n">child</span> <span class="n">h2</span> <span class="err">{</span>
+</span><span class='line'>                <span class="o">.</span><span class="n">highlight</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="err">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Feature:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>        <span class="nc">.feature-4</span> <span class="p">{</span>
+</span><span class='line'>            <span class="o">.</span><span class="n">pattern</span><span class="m">-1</span><span class="p">;</span>
+</span><span class='line'>            <span class="o">.</span><span class="k">left</span><span class="o">-</span><span class="n">column</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://static.responsivenews.co.uk/examples/img/less-css-vis1.png" alt="" /></p>
+
+<p>This technique maintains the separation between styleguide &amp; feature styles
+that allows Object Oriented CSS to scale so well, but by retaining the
+distinction between content and styling we can apply these benefits to a
+responsive design. If you create parallel LESS feature files for your
+different responsive views, you can simply choose different UI patterns from
+the styleguide for each viewport.</p>
+
+<p>Styleguide with two UI patterns:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>        <span class="nc">.column-1of2</span> <span class="o">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">width</span><span class="o">:</span> <span class="m">50</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'>            <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nc">.column-1of1</span> <span class="o">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">width</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'>            <span class="k">float</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nc">.left-column</span> <span class="o">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">clear</span><span class="o">:</span> <span class="k">both</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nc">.highlight</span> <span class="o">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nc">.pattern-1</span> <span class="o">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="o">.</span><span class="n">column</span><span class="m">-1</span><span class="n">of2</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="n">article</span><span class="o">:</span><span class="n">first</span><span class="o">-</span><span class="n">child</span> <span class="n">h2</span> <span class="err">{</span>
+</span><span class='line'>                <span class="o">.</span><span class="n">highlight</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="err">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nc">.pattern-2</span> <span class="o">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="o">.</span><span class="n">column</span><span class="m">-1</span><span class="n">of1</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="n">article</span><span class="o">:</span><span class="n">first</span><span class="o">-</span><span class="n">child</span> <span class="n">h2</span> <span class="err">{</span>
+</span><span class='line'>                <span class="o">.</span><span class="n">highlight</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="err">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Feature (wide viewport):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>        <span class="nc">.feature-4</span> <span class="p">{</span>
+</span><span class='line'>            <span class="o">.</span><span class="n">pattern</span><span class="m">-1</span><span class="p">;</span>
+</span><span class='line'>            <span class="o">.</span><span class="k">left</span><span class="o">-</span><span class="n">column</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Feature (narrow viewport):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>        <span class="nc">.feature-4</span> <span class="p">{</span>
+</span><span class='line'>            <span class="o">.</span><span class="n">pattern</span><span class="m">-2</span><span class="p">;</span>
+</span><span class='line'>            <span class="o">.</span><span class="k">left</span><span class="o">-</span><span class="n">column</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://static.responsivenews.co.uk/examples/img/less-css-vis1.png" alt="" /></p>
+
+<p><img src="http://static.responsivenews.co.uk/examples/img/less-css-vis2.png" alt="" /></p>
+
+<p>fig.4 By giving each HTML feature a LESS file for every viewport, you get a
+completely modular, dry CSS framework for responsive design.</p>
+
+<ol>
+<li>Responsive LESS
+structure<img src="http://static.responsivenews.co.uk/examples/img/less-css-%0Afigure4.png" alt="" /></li>
+</ol>
+
+
+<h2>…Gzip</h2>
+
+<p><strong>Remember to Gzip!</strong> The downside of using CSS compilers in this way is that the styleguide code is duplicated every time they it gets applied to a feature. If you Gzip your files this isn&#8217;t problem, because Gzipping is practically designed to work best with identical strings of text, but without Gzip those files get quite large.</p>
+]]></content>
+  </entry>
+  
+</feed>
