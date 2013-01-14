@@ -1,3 +1,42 @@
+## How to set-up
+
+### Initial setup
+
+```sh
+
+
+# Grab the repo
+git clone git@github.com:BBC-News/bbc-news.github.com.git
+
+cd bbc-news.github.com
+
+# Github uses the master branch for generated html so we work off source branch
+git checkout -b source origin/source
+
+# Generate the staic files from markdown etc
+rake generate
+
+# Setup _deploy directory to push static content to our repo
+rake setup_github_pages #Task asks for: git@github.com:BBC-News/bbc-news.github.com.git
+
+```
+# Editing / Adding to the blog
+
+```sh
+
+# See changes locally
+rake preview
+
+# Deploy the static files to github - this pushes to master
+rake deploy
+
+# Commit changes to the source files back to Github
+# Check you are in the source branch NOT master
+git commit -am "whatever"
+git push origin source
+
+```
+
 ## What is Octopress?
 
 Octopress is [Jekyll](https://github.com/mojombo/jekyll) blogging at its finest.
