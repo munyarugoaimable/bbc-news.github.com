@@ -2,6 +2,7 @@
 layout: post
 title: How we build our Javascript
 author: John Cleveley
+permalink: /post/21021136520/how-we-build-our-javascript
 tags: javascript
 ---
 This post isn't strictly about responsive design but hopefully it'll give you

@@ -2,6 +2,7 @@
 layout: post
 title: Axes of responsive design
 author: Matt Chadburn
+permalink: /post/12642980168/axes-of-responsive-design
 tags:
 - DAP
 - product design

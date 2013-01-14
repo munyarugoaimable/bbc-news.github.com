@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Cutting the mustard
+permalink: /post/18948466399/cutting-the-mustard
 tags: Tom Maslen
 ---
 The browser is a hostile development environment and supporting a wide range

@@ -2,6 +2,7 @@
 layout: post
 title: It's time for a brand new kitchen
 author: Tom Maslen
+permalink: /post/21437180628/its-time-for-a-brand-new-kitchen
 tags: responsive
 ---
 A few weeks ago we [blogged about our browser
