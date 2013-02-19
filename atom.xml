@@ -4,7 +4,7 @@
   <title><![CDATA[Responsive News]]></title>
   <link href="http://BBC-News.github.com/atom.xml" rel="self"/>
   <link href="http://BBC-News.github.com/"/>
-  <updated>2013-01-27T20:19:53+00:00</updated>
+  <updated>2013-02-19T10:35:07+00:00</updated>
   <id>http://BBC-News.github.com/</id>
   <author>
     <name><![CDATA[BBC News crew]]></name>
@@ -12,49 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Testing tools]]></title>
-    <link href="http://BBC-News.github.com/blog/2013/01/27/testing-tools/"/>
-    <updated>2013-01-27T14:13:00+00:00</updated>
-    <id>http://BBC-News.github.com/blog/2013/01/27/testing-tools</id>
-    <content type="html"><![CDATA[<p>Automated testing is becoming a necessity rather than just a nice to have. It allows us to have far more confidence in the code we&#8217;re about to ship so we have less late night fixes and embarrassing apologies.</p>
-
-<p>We&#8217;re becoming more reliant on automated tests as our project evolves:</p>
-
-<h2>Growing code base</h2>
-
-<p>Our team has been growing rapidly over the last few months and in doing so commits to the code base has increased too. We&#8217;re rapidly deploying all of the BBC 28 World Service sites which puts more pressure on the manual testers.</p>
-
-<p>This obviously doesn&#8217;t scale and leads to more time being spent at the end of the cycle just for testing halting the whole process.</p>
-
-<h2>More regular deploys</h2>
-
-<p>We&#8217;re currently running on a two week deploy cycle, mainly due the the fact the deployment process at the BBC is pretty manual and completely owned by Ops (stage and live).</p>
-
-<p>As with most dev teams we&#8217;re pushing for continuous deployment to help us make more frequent less risky changes to the code base. But a one click deploy is looking like a few years own the line in the mean time we&#8217;re looking at weekly deploys.</p>
-
-<h2>Device explosion</h2>
-
-<p>Thousands of different devices hit our site, some with crazy browsers and manufacturers that love to tinker with the stock experience. We regularly scan our stats to make sure we have most popular devices at hand - we don&#8217;t feel on-line solutions for device testing is worthwhile.</p>
-
-<h2>Responsive design</h2>
-
-<p>We&#8217;re big fans of responsive design (duh), but the big challenge with RWD is managing the complexity of the front end code.</p>
-
-<h2>Tools to the rescue!</h2>
-
-<p>Manual testing and how we can make sure our release is as bug free as possible without the drag of the latter few days loaded with manual testing.</p>
-
-<h3>Functional tests</h3>
-
-<h3>View regression tests</h3>
-
-<h3>Performance tests</h3>
-
-<h3>Conclusion</h3>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[It's time for a brand new kitchen]]></title>
